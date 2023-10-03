@@ -10,32 +10,33 @@
 <ion-content [fullscreen]="true">
   <div id="container" class="container" mode="ios">
     <ion-card>
-      
+      <form [formGroup]="formReg">
       <div class="container">
         <br>
           
           <input type="text" placeholder="Nombre" class="form-control" >
           <br>
           
-          <input type="email" placeholder="Email" class="form-control" >
+          <input type="email" formControlName="email" placeholder="Email" class="form-control" >
           <br>
         
           <input type="password" placeholder="contraseña" class="form-control" >
           <br>
-          <input type="password" placeholder="Confirma tu contraseña" class="form-control" >
+          <input type="password" formControlName="password" placeholder="Confirma tu contraseña" class="form-control" >
           <br>
           <input type="checkbox" > <label for="mostrarContrasena" class="checkbox-label">Mostrar contraseña</label>
           
       </div>
+    </form>
       <br>
       <div class="d-grid gap-2 container">
-        <button type="button" class="btn  idBColor">Registrarse</button>
+        <button type="button" class="btn  idBColor" (click)="summit()">Registrarse</button>
       </div>
       
       <h2>O</h2>
 
       <div class="d-grid gap-2 container">
-        <button type="button" class="btn idBColor "> <ion-icon name="logo-google"></ion-icon> Registrarse con Google  </button>
+        <button type="button" class="btn idBColor " (click)="onClic()"> <ion-icon name="logo-google"></ion-icon> Registrarse con Google  </button>
       </div>
       
     </ion-card>
