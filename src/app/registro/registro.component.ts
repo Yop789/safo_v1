@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../services/usuario.service';
 
 @Component({
@@ -9,19 +9,27 @@ import { UsuarioService } from '../services/usuario.service';
 })
 export class RegistroComponent implements OnInit {
   formReg: FormGroup;
-  constructor(private usuarioService: UsuarioService) {
+  emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+  constructor(private usuarioService: UsuarioService,private formBuilder: FormBuilder,) {
     this.formReg = new FormGroup({
       email: new FormControl(),
       password: new FormControl(),
     });
   }
-
+  checkPasswords(group: FormGroup) {
+    let pass = group.get('password')?.value;
+    let confirmPass = group.get('validatorPassword')?.value;
+    return pass === confirmPass ? null : { notSame: true };
+  }
+  
   ngOnInit() {}
   summit() {
     this.usuarioService
       .register(this.formReg.value)
       .then(console.log)
       .catch((error) => console.log);
+
+    console.log(this.formReg.value)
   }
   onClic() {
     this.usuarioService
