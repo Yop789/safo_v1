@@ -11,34 +11,84 @@
   <div id="container" class="container" mode="ios">
     <ion-card>
       <form [formGroup]="formReg">
-      <div class="container">
-        <br>
-          
-          <input type="text" placeholder="Nombre" class="form-control" >
-          <br>
-          
-          <input type="email" formControlName="email" placeholder="Email" class="form-control" >
-          <br>
-        
-          <input type="password" placeholder="contraseña" class="form-control" >
-          <br>
-          <input type="password" formControlName="password" placeholder="Confirma tu contraseña" class="form-control" >
-          <br>
-          <input type="checkbox" > <label for="mostrarContrasena" class="checkbox-label">Mostrar contraseña</label>
-          
-      </div>
-    </form>
-      <br>
+        <div class="container">
+          <br />
+
+          <input
+            type="text"
+            placeholder="Nombre"
+            formControlName="name"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': formReg.get('name')?.invalid }"
+          />
+          <br />
+
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': formReg.get('email')?.invalid }"
+          />
+          <br />
+
+          <input
+            type="password"
+            placeholder="contraseña"
+            formControlName="password"
+            [type]="password ? 'text' : 'password'"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': formReg.get('password')?.invalid }"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="formReg.get('password')?.hasError('pattern')"
+          >
+            La contraseña debe tener al menos 8 caracteres, incluyendo una letra
+            mayúscula, una letra minúscula, un carácter especial y al menos un
+            número.
+          </div>
+          <br />
+          <input
+            [type]="password ? 'text' : 'password'"
+            placeholder="Confirma tu contraseña"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                formReg.get('passwordValid')?.invalid ||
+                formReg.hasError('notSame')
+            }"
+            formControlName="passwordValid"
+          />
+          <div *ngIf="formReg.hasError('notSame')" class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+      </form>
+      <br />
+      <input type="checkbox" [(ngModel)]="password" />
+      <label for="mostrarContrasena" class="checkbox-label"
+        >Mostrar contraseña</label
+      >
+      <br />
       <div class="d-grid gap-2 container">
-        <button  type="button" class="btn  idBColor" (click)="summit()">Registrarse</button>
+        <button
+          type="button"
+          class="btn idBColor"
+          [disabled]="formReg.invalid"
+          (click)="summit()"
+        >
+          Registrarse
+        </button>
       </div>
-      
+
       <h2>O</h2>
 
       <div class="d-grid gap-2 container">
-        <button type="button" class="btn idBColor " (click)="onClic()"> <ion-icon name="logo-google"></ion-icon> Registrarse con Google  </button>
+        <button type="button" class="btn idBColor" (click)="onClic()">
+          <ion-icon name="logo-google"></ion-icon> Registrarse con Google
+        </button>
       </div>
-      
     </ion-card>
   </div>
 </ion-content>
