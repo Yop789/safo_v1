@@ -14,7 +14,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { provideMessaging, getMessaging } from '@angular/fire/messaging';
-import { InicioComponent } from './inicio/inicio.component';
+import { InicioComponent } from './home/inicio/inicio.component';
 @NgModule({
   declarations: [AppComponent, InicioComponent],
   imports: [
