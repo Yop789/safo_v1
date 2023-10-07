@@ -14,8 +14,10 @@ import { RecuperarComponent } from '../recuperar/recuperar.component';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    FormsModule,
   ],
   declarations: [HomePage, RegistroComponent, RecuperarComponent]
+
 })
 export class HomePageModule {}
