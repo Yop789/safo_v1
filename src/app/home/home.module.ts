@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { RegistroComponent } from '../registro/registro.component';
+import { InicioSesionComponent } from '../inicio-sesion/inicio-sesion.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { RegistroComponent } from '../registro/registro.component';
     HomePageRoutingModule,
     FormsModule,
   ],
-  declarations: [HomePage, RegistroComponent],
+  declarations: [HomePage, RegistroComponent,InicioSesionComponent],
 })
 export class HomePageModule {}
