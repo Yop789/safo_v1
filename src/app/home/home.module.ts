@@ -6,7 +6,11 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { RegistroComponent } from '../registro/registro.component';
+
+import { InicioSesionComponent } from '../inicio-sesion/inicio-sesion.component';
+
 import { RecuperarComponent } from '../recuperar/recuperar.component';
+
 
 @NgModule({
   imports: [
@@ -17,7 +21,9 @@ import { RecuperarComponent } from '../recuperar/recuperar.component';
     HomePageRoutingModule,
     FormsModule,
   ],
-  declarations: [HomePage, RegistroComponent, RecuperarComponent]
+
+  declarations: [HomePage, RegistroComponent, RecuperarComponent,InicioSesionComponent]
+
 
 })
 export class HomePageModule {}
