@@ -4,7 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-import { RegistroComponent } from '../registro/registro.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { AgregarComponent } from './agregar/agregar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -14,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { RegistroComponent } from './registro/registro.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { RecuperarComponent } from './recuperar/recuperar.component';
-
 
 @NgModule({
   imports: [
@@ -27,15 +25,15 @@ import { RecuperarComponent } from './recuperar/recuperar.component';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+    FormsModule,
   ],
   declarations: [
     HomePage,
     RegistroComponent,
     InicioComponent,
     AgregarComponent,
+    RecuperarComponent,
+    InicioSesionComponent,
   ],
-    FormsModule,
-  ],
-  declarations: [HomePage, RegistroComponent, RecuperarComponent,InicioSesionComponent]
 })
 export class HomePageModule {}

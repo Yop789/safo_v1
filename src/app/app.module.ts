@@ -10,7 +10,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
-import { ReactiveFormsModule } from '@angular/forms';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
@@ -20,13 +20,11 @@ import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 
 import { FooterComponent } from './home/footer/footer.component';
 import { HeaderComponent } from './home/header/header.component';
-@NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent],
-  imports: [
 
-import { InicioComponent } from './home/inicio/inicio.component';
+
+import { formatPercent } from '@angular/common';
 @NgModule({
-  declarations: [AppComponent, InicioComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     FormsModule,
     BrowserModule,
