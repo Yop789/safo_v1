@@ -6,6 +6,13 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { RegistroComponent } from '../registro/registro.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { AgregarComponent } from './agregar/agregar.component';
+import { FooterComponent } from './footer/footer.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 @NgModule({
@@ -14,8 +21,17 @@ import { RegistroComponent } from '../registro/registro.component';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
   ],
-  declarations: [HomePage, RegistroComponent]
+  declarations: [
+    HomePage,
+    RegistroComponent,
+    InicioComponent,
+    AgregarComponent,
+
+  ],
 })
 export class HomePageModule {}
