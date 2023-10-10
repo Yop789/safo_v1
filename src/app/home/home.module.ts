@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
-
 import { HomePageRoutingModule } from './home-routing.module';
+import { RegistroComponent } from '../registro/registro.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { AgregarComponent } from './agregar/agregar.component';
+import { FooterComponent } from './footer/footer.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { RegistroComponent } from './registro/registro.component';
-
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-
 import { RecuperarComponent } from './recuperar/recuperar.component';
 
 
@@ -19,11 +23,19 @@ import { RecuperarComponent } from './recuperar/recuperar.component';
     ReactiveFormsModule,
     IonicModule,
     HomePageRoutingModule,
+
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+  ],
+  declarations: [
+    HomePage,
+    RegistroComponent,
+    InicioComponent,
+    AgregarComponent,
+  ],
     FormsModule,
   ],
-
   declarations: [HomePage, RegistroComponent, RecuperarComponent,InicioSesionComponent]
-
-
 })
 export class HomePageModule {}
