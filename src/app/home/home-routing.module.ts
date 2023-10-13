@@ -12,7 +12,7 @@ export const routes: Routes = [
   },
   { path: 'inicio', component: InicioComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: 'inicioSesio', component: InicioSesionComponent },
+  { path: 'iniciosesio', component: InicioSesionComponent },
 ];
 
 @NgModule({

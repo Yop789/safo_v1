@@ -13,6 +13,8 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 import { HomePageModule } from './home/home.module';
+import { HomePage } from './home/home.page';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +23,7 @@ import { HomePageModule } from './home/home.module';
     FormsModule,
     BrowserModule,
     ReactiveFormsModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({ mode: 'ios' }),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
@@ -30,7 +32,7 @@ import { HomePageModule } from './home/home.module';
     provideFunctions(() => getFunctions()),
     provideMessaging(() => getMessaging()),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

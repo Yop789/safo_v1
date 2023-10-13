@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home/home.page';
 import * as routeHome from './home/home-routing.module';
+import { InicioComponent } from './home/inicio/inicio.component';
+import { RegistroComponent } from './home/registro/registro.component';
+import { InicioSesionComponent } from './home/inicio-sesion/inicio-sesion.component';
 
 const routes: Routes = [
   {
@@ -12,7 +15,16 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePage,
-    children: routeHome.routes,
+    children: [
+      {
+        path: '',
+        redirectTo: 'inicio',
+        pathMatch: 'full',
+      },
+      { path: 'inicio', component: InicioComponent },
+      { path: 'registro', component: RegistroComponent },
+      { path: 'iniciosesio', component: InicioSesionComponent },
+    ],
   },
 ];
 

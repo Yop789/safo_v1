@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor() {}
+  component = InicioSesionComponent;
+  constructor(private location: Location) {}
 
+  goBack() {
+    this.location.back();
+  }
+  verificarSiEstaEnHome(): boolean {
+    const url = this.location.path();
+    return url === '/home/inicio';
+  }
 }

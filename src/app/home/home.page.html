@@ -1,6 +1,31 @@
-<ion-app>
-  <app-header></app-header>
-
-  <ion-router-outlet></ion-router-outlet>
-  <app-footer></app-footer>
-</ion-app>
+<ion-menu mode="ios" side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title class="titulo"> titulo </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <app-menu></app-menu>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" mode="ios" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons
+        *ngIf="!verificarSiEstaEnHome()"
+        (click)="goBack()"
+        slot="start"
+      >
+        <ion-back-button default-href></ion-back-button>
+      </ion-buttons>
+      <app-header></app-header>
+      <ion-buttons slot="end">
+        <ion-menu-button class="titulo"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-router-outlet></ion-router-outlet>
+    <app-footer></app-footer>
+  </ion-content>
+</div>
