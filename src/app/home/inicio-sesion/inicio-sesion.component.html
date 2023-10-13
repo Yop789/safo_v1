@@ -1,61 +1,67 @@
-<ion-header mode="ios" [translucent]="true">
-  <ion-toolbar>
-    <ion-title class="idText"> Iniciar Sesión </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <div id="container" class="container" mode="ios">
     <form [formGroup]="formInicioSesion" (ngSubmit)="iniciarSesion()">
-    <ion-card>
-      <div class="container">
-        <br />
+      <ion-card>
+        <div class="container">
+          <br />
 
-        <input
-          type="text"
-          placeholder="Usuario"
-          formControlName="usuario"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': formInicioSesion.get('usuario')?.touched && formInicioSesion.get('usuario')?.invalid }"
-        />
+          <input
+            type="text"
+            placeholder="Usuario"
+            formControlName="usuario"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                formInicioSesion.get('usuario')?.touched &&
+                formInicioSesion.get('usuario')?.invalid
+            }"
+          />
 
-        <br />
+          <br />
 
-        <input
-          type="password"
-          placeholder="Contraseña"
-          formControlName="password"
-          [type]="mostrarPassword ? 'text' : 'password'"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': formInicioSesion.get('password')?.touched && formInicioSesion.get('password')?.invalid }"
-        />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            formControlName="password"
+            [type]="mostrarPassword ? 'text' : 'password'"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                formInicioSesion.get('password')?.touched &&
+                formInicioSesion.get('password')?.invalid
+            }"
+          />
 
-        <div
-          class="invalid-feedback"
-          *ngIf="formInicioSesion.get('password')?.hasError('pattern')"
-        >
-          La contraseña debe tener al menos 8 caracteres, incluyendo una letra
-          mayúscula, una letra minúscula, un carácter especial y al menos un
-          número.
+          <div
+            class="invalid-feedback"
+            *ngIf="formInicioSesion.get('password')?.hasError('pattern')"
+          >
+            La contraseña debe tener al menos 8 caracteres, incluyendo una letra
+            mayúscula, una letra minúscula, un carácter especial y al menos un
+            número.
+          </div>
+          <br />
         </div>
         <br />
-      </div>
-      <br />
-      <input type="checkbox" [checked]="mostrarPassword" (change)="mostrarPassword = !mostrarPassword" />
-      <label for="mostrarContrasena" class="checkbox-label"
-        >Mostrar contraseña</label
-      >
+        <input
+          type="checkbox"
+          [checked]="mostrarPassword"
+          (change)="mostrarPassword = !mostrarPassword"
+        />
+        <label for="mostrarContrasena" class="checkbox-label"
+          >Mostrar contraseña</label
+        >
 
-      <div class="d-grid gap-2 container">
-        <button type="button" class="btn idBColor" (click)="iniciarSesion()">
-          Iniciar Sesión
-        </button>
-      </div>
+        <div class="d-grid gap-2 container">
+          <button type="button" class="btn idBColor" (click)="iniciarSesion()">
+            Iniciar Sesión
+          </button>
+        </div>
 
-      <p class="ion-text-center idText">
-        ¿No tienes una cuenta? <a routerLink="/registro">Regístrate</a>
-      </p>
-    </ion-card>
-  </form>
+        <p class="ion-text-center idText">
+          ¿No tienes una cuenta? <a routerLink="/home/registro">Regístrate</a>
+        </p>
+      </ion-card>
+    </form>
   </div>
 </ion-content>

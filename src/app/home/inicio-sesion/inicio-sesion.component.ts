@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
+import { TituloAppService } from 'src/app/services/titulo-app.service';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -12,16 +18,16 @@ export class InicioSesionComponent implements OnInit {
   public formInicioSesion: FormGroup;
   public mostrarPassword: boolean = false;
 
-
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private tituloAppService: TituloAppService
   ) {
     this.formInicioSesion = this.formBuilder.group({
-      usuario: ['',[ Validators.required,
-                    Validators.pattern(/^[a-z0-9._]+$/i),
-                  ],
-                ],
+      usuario: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-z0-9._]+$/i)],
+      ],
       password: [
         '',
         [
@@ -32,10 +38,11 @@ export class InicioSesionComponent implements OnInit {
         ],
       ],
     });
-
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tituloAppService.titulo = 'Iniciar Sesión';
+  }
 
   togglePasswordVisibility() {
     this.mostrarPassword = !this.mostrarPassword;
@@ -61,4 +68,4 @@ export class InicioSesionComponent implements OnInit {
       // El formulario no es válido, puedes mostrar un mensaje de error o hacer algo más.
     }
   }
-  }
+}

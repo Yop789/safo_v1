@@ -1,3 +1,4 @@
+import { TituloAppService } from './../../services/titulo-app.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -22,7 +23,8 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private tituloAppService: TituloAppService
   ) {
     this.formReg = this.formBuilder.group(
       {
@@ -39,6 +41,7 @@ export class RegistroComponent implements OnInit {
       },
       { validator: this.checkPasswords }
     );
+    this.tituloAppService.titulo = 'Registro';
   }
   checkPasswords(group: FormGroup) {
     let pass = group.get('password')?.value;

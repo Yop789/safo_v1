@@ -1,30 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Blank </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu mode="ios" side="end" contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Safo</ion-title>
+      <ion-title class="titulo"> titulo </ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ionicframework.com/docs/components"
-        >UI Components</a
+  <ion-content class="ion-padding">
+    <app-menu></app-menu>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" mode="ios" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons
+        *ngIf="!verificarSiEstaEnHome()"
+        (click)="goBack()"
+        slot="start"
       >
-    </p>
-  </div>
-</ion-content>
-
-<ion-app>
-  <ion-footer></ion-footer>
-</ion-app>
+        <ion-back-button default-href></ion-back-button>
+      </ion-buttons>
+      <app-header></app-header>
+      <ion-buttons slot="end">
+        <ion-menu-button class="titulo"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-router-outlet></ion-router-outlet>
+    <app-footer></app-footer>
+  </ion-content>
+</div>
