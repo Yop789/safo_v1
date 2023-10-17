@@ -1,3 +1,4 @@
+import { TituloAppService } from './../services/titulo-app.service';
 import { Component } from '@angular/core';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { Location } from '@angular/common';
@@ -9,10 +10,14 @@ import { Location } from '@angular/common';
 })
 export class HomePage {
   component = InicioSesionComponent;
-  constructor(private location: Location) {}
+  constructor(
+    private location: Location,
+    private tituloAppService: TituloAppService
+  ) {}
 
   goBack() {
     this.location.back();
+    this.tituloAppService.back();
   }
   verificarSiEstaEnHome(): boolean {
     const url = this.location.path();

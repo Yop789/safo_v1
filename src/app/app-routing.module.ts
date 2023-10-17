@@ -5,6 +5,7 @@ import * as routeHome from './home/home-routing.module';
 import { InicioComponent } from './home/inicio/inicio.component';
 import { RegistroComponent } from './home/registro/registro.component';
 import { InicioSesionComponent } from './home/inicio-sesion/inicio-sesion.component';
+import { DetallesComponent } from './home/detalles/detalles.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'inicio', component: InicioComponent },
       { path: 'registro', component: RegistroComponent },
       { path: 'iniciosesio', component: InicioSesionComponent },
+      { path: 'detalles', component: DetallesComponent },
     ],
   },
 ];
