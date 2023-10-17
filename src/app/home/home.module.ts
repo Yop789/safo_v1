@@ -17,15 +17,17 @@ import { RecuperarComponent } from './recuperar/recuperar.component';
 import { HeaderComponent } from './header/header.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { TituloAppService } from '../services/titulo-app.service';
+import { DetallesComponent } from './detalles/detalles.component';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule,
+    IonicModule.forRoot({ mode: 'ios' }),
     HomePageRoutingModule,
-
+    NgbRatingModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
@@ -41,6 +43,7 @@ import { TituloAppService } from '../services/titulo-app.service';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
+    DetallesComponent,
   ],
   providers: [TituloAppService],
 })

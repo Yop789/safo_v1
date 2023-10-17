@@ -15,11 +15,13 @@ import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 import { HomePageModule } from './home/home.module';
 import { HomePage } from './home/home.page';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     HomePageModule,
+    NgbRatingModule,
     FormsModule,
     BrowserModule,
     ReactiveFormsModule,
