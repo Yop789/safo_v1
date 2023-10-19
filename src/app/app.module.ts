@@ -16,6 +16,8 @@ import { HomePageModule } from './home/home.module';
 import { HomePage } from './home/home.page';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminPageModule } from './admin/admin.module';
+import { ClientPageModule } from './client/client.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,9 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     HomePageModule,
     NgbRatingModule,
     FormsModule,
+    AdminPageModule,
     BrowserModule,
+    ClientPageModule,
     ReactiveFormsModule,
     IonicModule.forRoot({ mode: 'ios' }),
     AppRoutingModule,

@@ -27,7 +27,6 @@
 
 .idText {
   color: #5cb85c;
-  font-size: 30px;
 }
 .idBColor {
   background-color: #5cb85c;
@@ -36,4 +35,39 @@
 .idBColor:hover {
   background-color: #7d807d;
   color: white;
+}
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+.btnReg {
+  --background: #3ce04e;
+  --background-activated: #b8b8b8;
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+}
+.idText {
+  font-size: 30px;
 }
