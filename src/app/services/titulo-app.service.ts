@@ -25,7 +25,6 @@ export class TituloAppService {
     if (this.titulos.length > 1) {
       this.titulos.pop();
       let ultimoTitulo = this.titulos[this.titulos.length - 1];
-      console.log(ultimoTitulo, this.titulos);
       this._titulo.next(ultimoTitulo);
     }
   }

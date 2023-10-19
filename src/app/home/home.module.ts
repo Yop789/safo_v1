@@ -19,6 +19,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { TituloAppService } from '../services/titulo-app.service';
 import { DetallesComponent } from './detalles/detalles.component';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { OpcionUserComponent } from './opcion-user/opcion-user.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     MenuComponent,
     DetallesComponent,
+    OpcionUserComponent,
   ],
   providers: [TituloAppService],
 })
