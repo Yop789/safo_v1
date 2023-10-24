@@ -28,8 +28,7 @@ const routes: Routes = [
       { path: 'iniciosesio', component: InicioSesionComponent },
       { path: 'detalles', component: DetallesComponent },
 
-      
-      { path: 'misPlatillos', component: MisPlatillosComponent}
+
     ],
   },
 ];
