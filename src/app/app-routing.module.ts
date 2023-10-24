@@ -6,8 +6,6 @@ import { InicioComponent } from './home/inicio/inicio.component';
 import { RegistroComponent } from './home/registro/registro.component';
 import { InicioSesionComponent } from './home/inicio-sesion/inicio-sesion.component';
 import { DetallesComponent } from './home/detalles/detalles.component';
-import { MisPlatillosComponent } from './home/mis-platillos/mis-platillos.component';
-
 const routes: Routes = [
   {
     path: '',
