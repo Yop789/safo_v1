@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { TituloAppService } from './../../services/titulo-app.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -64,10 +65,34 @@ export class RegistroComponent implements OnInit {
       .then((resp) => {
         // Aquí puedes realizar acciones en caso de éxito, como redireccionar al usuario.
         console.log(resp); // Puedes mostrar información útil en la consola.
+        this.insertUser();
       })
       .catch((error) => {
         // Aquí puedes manejar el error, como mostrar un mensaje de error al usuario.
         console.error(error); // Puedes mostrar información detallada del error en la consola.
       });
   }
+  insertUser() {
+    const user: User = {
+      idUser: 'ygyed',
+      role: 'dhdd',
+    };
+    this.usuarioService
+      .addUser(user)
+      .then((resp) => {
+        console.log;
+      })
+      .catch((error) => {
+        console.log;
+      });
+  }
+  // cargarImagen(event: any) {
+  //   let archivo = event.target.files;
+  //   let reader = new FileReader();
+
+  //   reader.readAsDataURL(archivo[0]);
+  //   reader.onload = () => {
+  //     this.usuarioService.addImages('hbhdb_' + new Date(), reader.result);
+  //   };
+  // }
 }

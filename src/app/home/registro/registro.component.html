@@ -1,10 +1,14 @@
 <ion-content [fullscreen]="true">
   <div id="container" class="container" mode="ios">
+    <div class="d-flex justify-content-center align-items-center">
+      <ion-avatar style="height: 100px; width: 100px">
+        <img alt="Silhouette of a person's head" src="assets/img/avatar.png" />
+      </ion-avatar>
+    </div>
     <ion-card>
       <form [formGroup]="formReg">
         <div class="container">
           <br />
-
           <input
             type="text"
             placeholder="Nombre"
@@ -55,14 +59,23 @@
             Please provide a valid city.
           </div>
         </div>
+        <br />
+        <div class="d-flex justify-content-start align-items-center ms-3">
+          <input type="checkbox" />
+          <label for="mostrarContrasena" class="checkbox-label ms-2">
+            Aceptar terminos y condiciones
+          </label>
+        </div>
       </form>
       <br />
-      <input type="checkbox" [(ngModel)]="password" />
-      <label for="mostrarContrasena" class="checkbox-label"
-        >Mostrar contraseña</label
-      >
-      <br />
-      <div class="d-grid gap-2 container">
+      <div class="d-flex justify-content-start align-items-center ms-3">
+        <input type="checkbox" [(ngModel)]="password" />
+        <label for="mostrarContrasena" class="checkbox-label ms-2">
+          Mostrar contraseña</label
+        >
+      </div>
+
+      <div class="d-grid gap-2 container mt-2">
         <button
           type="button"
           class="btn idBColor"
@@ -75,7 +88,7 @@
 
       <h2>O</h2>
 
-      <div class="d-grid gap-2 container">
+      <div class="d-grid gap-2 container mb-3">
         <button type="button" class="btn idBColor" (click)="onClic()">
           <ion-icon name="logo-google"></ion-icon> Registrarse con Google
         </button>
