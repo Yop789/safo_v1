@@ -50,6 +50,7 @@ import { OpcionUserComponent } from './opcion-user/opcion-user.component';
     MenuComponent,
     DetallesComponent,
     OpcionUserComponent,
+    MisPlatillosComponent
   ],
   providers: [TituloAppService],
 })
