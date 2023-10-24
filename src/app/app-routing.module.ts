@@ -6,6 +6,11 @@ import { InicioComponent } from './home/inicio/inicio.component';
 import { RegistroComponent } from './home/registro/registro.component';
 import { InicioSesionComponent } from './home/inicio-sesion/inicio-sesion.component';
 import { DetallesComponent } from './home/detalles/detalles.component';
+import { OpcionUserComponent } from './home/opcion-user/opcion-user.component';
+import { AdminPage } from './admin/admin.page';
+import { AdminPageModule } from './admin/admin.module';
+import { ClientPage } from './client/client.page';
+
 const routes: Routes = [
   {
     path: '',
@@ -22,11 +27,42 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       { path: 'inicio', component: InicioComponent },
-      { path: 'registro', component: RegistroComponent },
+      { path: 'registro/:id', component: RegistroComponent },
       { path: 'iniciosesio', component: InicioSesionComponent },
       { path: 'detalles', component: DetallesComponent },
+      { path: 'usuOpc', component: OpcionUserComponent },
+      {
+        path: 'admin',
+        component: AdminPage,
+        children: [
+          {
+            path: '',
+            component: AdminPage,
+          },
+        ],
+      },
+      {
+        path: 'client',
+        component: ClientPage,
+        children: [
+          {
+            path: '',
+            component: ClientPage,
+          },
+        ],
+      },
     ],
   },
+  // {
+  //   path: 'admin',
+  //   loadChildren: () =>
+  //     import('./admin/admin.module').then((m) => m.AdminPageModule),
+  // },
+  // {
+  //   path: 'client',
+  //   loadChildren: () =>
+  //     import('./client/client.module').then((m) => m.ClientPageModule),
+  // },
 ];
 
 @NgModule({
