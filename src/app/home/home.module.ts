@@ -45,9 +45,6 @@ import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
     FooterComponent,
     MenuComponent,
     DetallesComponent,
-
-    
-    MisPlatillosComponent,
   ],
   providers: [TituloAppService],
 })

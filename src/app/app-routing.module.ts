@@ -27,8 +27,6 @@ const routes: Routes = [
       { path: 'registro', component: RegistroComponent },
       { path: 'iniciosesio', component: InicioSesionComponent },
       { path: 'detalles', component: DetallesComponent },
-
-
     ],
   },
 ];
