@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { TituloAppService } from '../services/titulo-app.service';
 import { DetallesComponent } from './detalles/detalles.component';
+import { AgregarRecetaComponent } from './agregar-receta/agregar-receta.component';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -44,6 +45,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     MenuComponent,
     DetallesComponent,
+    AgregarRecetaComponent
   ],
   providers: [TituloAppService],
 })
