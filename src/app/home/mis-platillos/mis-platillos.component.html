@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true">
+  <div id="container" class="container" mode="ios">
+  <ion-list>
+    <ion-item *ngFor="let receta of recetas" lines="full">
+      <ion-card class="ion-align-items-center">
+        <ion-card-content>
+          <ion-row>
+            <ion-col size="6">
+              <h2>{{ receta.nombre }}</h2>
+            </ion-col>
+            <ion-col size="6" class="ion-text-end" class="ion-text-center">
+              <!-- Estrellitas (calificación) -->
+              <ion-icon name="star" *ngFor="let _ of generarEstrellas(receta.calificacion)"></ion-icon>
+              <ion-icon name="star-outline" *ngFor="let _ of generarEstrellas(5 - receta.calificacion)"></ion-icon>
+            </ion-col>
+          </ion-row>
+
+          <ion-img [src]="receta.imagen" class="ion-margin-top ion-text-center"></ion-img>
+
+          <ion-row class="ion-margin-top">
+            <ion-col size="4">
+              <!-- Opción 1 - Porciones -->
+              <ion-button expand="block">Porciones</ion-button>
+            </ion-col>
+            <ion-col size="4">
+              <!-- Opción 2 - Ingredientes -->
+              <ion-button expand="block">Ingredientes</ion-button>
+            </ion-col>
+            <ion-col size="4">
+              <!-- Opción 3 - Duración -->
+              <ion-button expand="block">Duración</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</div>
+</ion-content>

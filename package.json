@@ -3,15 +3,15 @@
   "version": "0.0.0",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
+  "private": true,
   "scripts": {
+    "build": "ng build",
+    "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "watch": "ng build --watch --configuration development"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^16.0.0",
     "@angular/cdk": "^16.2.7",
@@ -26,7 +26,7 @@
     "@angular/router": "^16.0.0",
     "@capacitor/android": "^5.4.1",
     "@capacitor/app": "5.0.6",
-    "@capacitor/core": "5.4.1",
+    "@capacitor/core": "^5.5.0",
     "@capacitor/haptics": "5.0.6",
     "@capacitor/keyboard": "5.0.6",
     "@capacitor/status-bar": "5.0.6",

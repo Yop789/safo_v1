@@ -21,6 +21,11 @@ import { DetallesComponent } from './detalles/detalles.component';
 import { AgregarRecetaComponent } from './agregar-receta/agregar-receta.component';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
+
+import { OpcionUserComponent } from './opcion-user/opcion-user.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -46,6 +51,8 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     MenuComponent,
     DetallesComponent,
     AgregarRecetaComponent
+    OpcionUserComponent,
+    MisPlatillosComponent
   ],
   providers: [TituloAppService],
 })
