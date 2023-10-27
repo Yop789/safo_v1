@@ -7,18 +7,23 @@
 
           <input
             type="text"
-            placeholder="Usuario"
-            formControlName="usuario"
+            placeholder="Correo"
+            formControlName="correo"
             class="form-control"
             [ngClass]="{
               'is-invalid':
-                formInicioSesion.get('usuario')?.touched &&
-                formInicioSesion.get('usuario')?.invalid
+                formInicioSesion.get('correo')?.touched &&
+                formInicioSesion.get('correo')?.invalid
             }"
           />
 
           <br />
-
+          <div
+          class="invalid-feedback"
+          *ngIf="formInicioSesion.get('correo')?.hasError('pattern')"
+        >
+        Correo inválido.
+      </div>
           <input
             type="password"
             placeholder="Contraseña"
