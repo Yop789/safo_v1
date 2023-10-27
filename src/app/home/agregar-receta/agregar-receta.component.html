@@ -1,0 +1,44 @@
+<ion-header mode="ios" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="idText"> Recuperar contraseña </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div id="container" class="container" mode="ios">
+    <ion-card>
+
+      <form [formGroup]="formReceta">
+        <br>
+        <br>
+        <p>Selecciona una Imagen</p>
+        <br>
+        <input type="file" (change)="onFileSelected($event)">
+        <br>
+        <br>
+        <input formControlName="nombre" placeholder="Nombre de la receta">
+        <br>
+        <br>
+        <input formControlName="tiempo" placeholder="Tiempo de preparación">
+        <br>
+        <br>
+        <input formControlName="ingredientes" placeholder="Ingredientes">
+        <br>
+        <br>
+        <input formControlName="pasos" placeholder="Pasos para preparar la receta">
+        <br>
+        <br>
+      </form>
+      <br>
+      <div class="d-grid gap-2 container">
+        <button type="button" class="btn  idBColor" (click)="agregarReceta()">Recuperar</button>
+        <button type="button" class="btn  idBColor2" (click)="cancelar()">Cancelar</button>
+      </div>
+      <br>
+      <br>
+    </ion-card>
+  </div>
+</ion-content>

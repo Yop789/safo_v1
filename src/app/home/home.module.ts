@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { TituloAppService } from '../services/titulo-app.service';
 import { DetallesComponent } from './detalles/detalles.component';
+import { AgregarRecetaComponent } from './agregar-receta/agregar-receta.component';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
@@ -49,6 +50,7 @@ import { OpcionUserComponent } from './opcion-user/opcion-user.component';
     FooterComponent,
     MenuComponent,
     DetallesComponent,
+    AgregarRecetaComponent
     OpcionUserComponent,
     MisPlatillosComponent
   ],
