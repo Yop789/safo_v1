@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import { TituloAppService } from 'src/app/services/titulo-app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -19,14 +20,15 @@ export class InicioSesionComponent implements OnInit {
   public mostrarPassword: boolean = false;
 
   constructor(
-    private authService: AuthService,
+    private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
-    private tituloAppService: TituloAppService
+    private tituloAppService: TituloAppService,
+    private router: Router
   ) {
     this.formInicioSesion = this.formBuilder.group({
-      usuario: [
+      correo: [
         '',
-        [Validators.required, Validators.pattern(/^[a-z0-9._]+$/i)],
+        [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i)],
       ],
       password: [
         '',
@@ -48,22 +50,23 @@ export class InicioSesionComponent implements OnInit {
     this.mostrarPassword = !this.mostrarPassword;
   }
 
-  iniciarSesion() {
+  async iniciarSesion() {
     if (this.formInicioSesion.valid) {
-      const usuario = this.formInicioSesion.get('usuario')?.value;
+      const email = this.formInicioSesion.get('correo')?.value;
       const password = this.formInicioSesion.get('password')?.value;
 
-      // Llama al servicio de autenticación para verificar las credenciales.
-      this.authService.iniciarSesion(usuario, password).subscribe(
-        (response) => {
-          // Maneja la respuesta de inicio de sesión exitoso.
-          console.log('Inicio de sesión exitoso');
-        },
-        (error) => {
-          // Maneja el error de inicio de sesión.
-          console.error('Error al iniciar sesión:', error);
-        }
-      );
+      try {
+        const user = await this.usuarioService.login(email, password);
+        // Maneja la respuesta de inicio de sesión exitoso.
+        console.log('Inicio de sesión exitoso', user);
+
+        // Redirige al usuario a la página de inicio después del inicio de sesión exitoso
+        this.router.navigate(['/home/inicio']); // Cambia 'inicio' por la ruta de tu página de inicio
+
+      } catch (error) {
+        // Maneja el error de inicio de sesión.
+        console.error('Error al iniciar sesión:', error);
+      }
     } else {
       // El formulario no es válido, puedes mostrar un mensaje de error o hacer algo más.
     }
