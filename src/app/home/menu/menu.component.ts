@@ -1,3 +1,5 @@
+import { OpMenusService } from './../../services/OpMenus/op-menus.service';
+import { OpMenu } from './../../models/op-menu';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  constructor(private router: Router) {}
+  //Variables
+  public menus: OpMenu[] = [];
 
-  ngOnInit() {}
+  constructor(private router: Router, private opMenusService: OpMenusService) {}
+
+  ngOnInit() {
+    this.menus = [
+      ...this.opMenusService.inicio_sesion,
+      ...this.opMenusService.admin,
+      ...this.opMenusService.client,
+      ...this.opMenusService.defalt,
+    ];
+  }
 
   pagina(s: string) {
     this.router.navigateByUrl(`home/${s}`);
