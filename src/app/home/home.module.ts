@@ -25,7 +25,6 @@ import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
 
 import { OpcionUserComponent } from './opcion-user/opcion-user.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -50,9 +49,9 @@ import { OpcionUserComponent } from './opcion-user/opcion-user.component';
     FooterComponent,
     MenuComponent,
     DetallesComponent,
-    AgregarRecetaComponent
+    AgregarRecetaComponent,
     OpcionUserComponent,
-    MisPlatillosComponent
+    MisPlatillosComponent,
   ],
   providers: [TituloAppService],
 })

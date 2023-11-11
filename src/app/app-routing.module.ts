@@ -10,6 +10,7 @@ import { OpcionUserComponent } from './home/opcion-user/opcion-user.component';
 import { AdminPage } from './admin/admin.page';
 import { AdminPageModule } from './admin/admin.module';
 import { ClientPage } from './client/client.page';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   {
@@ -26,7 +27,10 @@ const routes: Routes = [
         redirectTo: 'inicio',
         pathMatch: 'full',
       },
-      { path: 'inicio', component: InicioComponent },
+      {
+        path: 'inicio',
+        component: InicioComponent,
+      },
       { path: 'registro/:id', component: RegistroComponent },
       { path: 'iniciosesio', component: InicioSesionComponent },
       { path: 'detalles', component: DetallesComponent },

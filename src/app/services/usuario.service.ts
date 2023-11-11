@@ -11,6 +11,7 @@ import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { User } from '../models/user';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 firebase.initializeApp(environment.firebase);
 
@@ -21,7 +22,11 @@ export class UsuarioService {
   //variables
   private storeRef = firebase.app().storage().ref();
 
-  constructor(private auth: Auth, private firestore: Firestore) {}
+  constructor(
+    private auth: Auth,
+    private firestore: Firestore,
+    private afAuth: AngularFireAuth
+  ) {}
 
   register({ email, password }: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
@@ -45,17 +50,15 @@ export class UsuarioService {
   }
   async login(email: string, password: string) {
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        this.auth,
-        email,
-        password
-      );
+      return await this.afAuth.signInWithEmailAndPassword(email, password);
       // El inicio de sesión fue exitoso, puedes devolver el usuario o hacer algo más con userCredential.user si es necesario
-      return userCredential.user;
     } catch (error) {
       // Si hay un error durante el inicio de sesión, puedes manejarlo aquí
       console.error('Error durante el inicio de sesión:', error);
       throw error; // Puedes relanzar el error para que sea manejado por el código que llamó a este método
     }
+  }
+  loginByGoogle() {
+    return this.afAuth.signInWithPopup(new GoogleAuthProvider());
   }
 }

@@ -12,8 +12,8 @@ export const environment = {
     authDomain: 'safo-106aa.firebaseapp.com',
     messagingSenderId: '464115816867',
   },
-  
-  production: false
+  apiSafo: 'http://localhost:3000/api/sofa/',
+  production: false,
 };
 
 /*

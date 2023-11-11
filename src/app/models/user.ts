@@ -1,4 +1,8 @@
 export interface User {
-  idUser: string;
-  role: string;
+  idUserFire: string;
+  name: string;
+  email: string;
+  telefono?: string;
+  rol: string;
+  avatar?: any;
 }

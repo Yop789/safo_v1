@@ -18,6 +18,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminPageModule } from './admin/admin.module';
 import { ClientPageModule } from './client/client.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,16 +30,20 @@ import { ClientPageModule } from './client/client.module';
     FormsModule,
     AdminPageModule,
     BrowserModule,
+    HttpClientModule,
+
     ClientPageModule,
     ReactiveFormsModule,
     IonicModule.forRoot({ mode: 'ios' }),
     AppRoutingModule,
+    AngularFireAuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     provideFunctions(() => getFunctions()),
     provideMessaging(() => getMessaging()),
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],

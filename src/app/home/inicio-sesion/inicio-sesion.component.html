@@ -7,6 +7,7 @@
 
           <input
             type="text"
+            name="email"
             placeholder="Correo"
             formControlName="correo"
             class="form-control"
@@ -19,13 +20,14 @@
 
           <br />
           <div
-          class="invalid-feedback"
-          *ngIf="formInicioSesion.get('correo')?.hasError('pattern')"
-        >
-        Correo inválido.
-      </div>
+            class="invalid-feedback"
+            *ngIf="formInicioSesion.get('correo')?.hasError('pattern')"
+          >
+            Correo inválido.
+          </div>
           <input
             type="password"
+            name="password"
             placeholder="Contraseña"
             formControlName="password"
             [type]="mostrarPassword ? 'text' : 'password'"
@@ -66,6 +68,12 @@
         <p class="ion-text-center idText">
           ¿No tienes una cuenta? <a routerLink="/home/registro">Regístrate</a>
         </p>
+
+        <div class="d-grid gap-2 container mb-3">
+          <button type="button" class="btn idBColor" (click)="onClic()">
+            <ion-icon name="logo-google"></ion-icon> Registrarse con Google
+          </button>
+        </div>
       </ion-card>
     </form>
   </div>

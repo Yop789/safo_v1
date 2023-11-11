@@ -13,6 +13,7 @@
             type="text"
             placeholder="Nombre"
             formControlName="name"
+            name="name"
             class="form-control"
             [ngClass]="{ 'is-invalid': formReg.get('name')?.invalid }"
           />
@@ -21,6 +22,7 @@
           <input
             type="email"
             formControlName="email"
+            name="email"
             placeholder="Email"
             class="form-control"
             [ngClass]="{ 'is-invalid': formReg.get('email')?.invalid }"
@@ -30,6 +32,7 @@
           <input
             type="password"
             placeholder="contraseña"
+            name="password"
             formControlName="password"
             [type]="password ? 'text' : 'password'"
             class="form-control"
