@@ -1,38 +1,8 @@
 <ion-list mode="ios">
-  <ion-menu-toggle>
-    <ion-item routerLink (click)="pagina('iniciosesio')">
-      <ion-icon name="log-in-outline"></ion-icon>
-      <ion-label>Iniciar Sesión </ion-label>
-    </ion-item>
-  </ion-menu-toggle>
-  <ion-menu-toggle>
-    <ion-item routerLink (click)="pagina('usuOpc')">
-      <ion-icon name="person-add-outline"></ion-icon>
-      <ion-label> Registrarse</ion-label>
-    </ion-item>
-  </ion-menu-toggle>
-  <ion-menu-toggle>
-    <ion-item routerLink (click)="pagina('admin')">
-      <ion-icon name="key-outline"></ion-icon>
-      <ion-label> Admin</ion-label>
-    </ion-item>
-  </ion-menu-toggle>
-  <ion-menu-toggle>
-    <ion-item routerLink (click)="pagina('client')">
-      <ion-icon name="megaphone-outline"></ion-icon>
-      <ion-label> Client</ion-label>
-    </ion-item>
-  </ion-menu-toggle>
-  <ion-menu-toggle>
-    <ion-item>
-      <ion-icon name="help-outline"></ion-icon>
-      <ion-label> Preguntas Frecuentes</ion-label>
-    </ion-item>
-  </ion-menu-toggle>
-  <ion-menu-toggle>
-    <ion-item>
-      <ion-icon name="alert-outline"></ion-icon>
-      <ion-label> Acerca de</ion-label>
+  <ion-menu-toggle *ngFor="let menu of menu">
+    <ion-item routerLink (click)="pagina(menu.url)">
+      <ion-icon [name]="menu.icon"></ion-icon>
+      <ion-label>{{ menu.name }} </ion-label>
     </ion-item>
   </ion-menu-toggle>
 </ion-list>

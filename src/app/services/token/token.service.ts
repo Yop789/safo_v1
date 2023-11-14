@@ -2,19 +2,32 @@ import { AuthService } from './../auth.service';
 import { Injectable } from '@angular/core';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  secretKey = 'tuClaveSecreta';
-
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
   decodeToken() {
-    return new JwtHelperService().decodeToken(
-      '' + localStorage.getItem('token')
-    );
+    console.log(localStorage);
+    if (localStorage.length > 0) {
+      console.log(`no ha funcionado`);
+      const token = '' + localStorage.getItem('token');
+      if (token) {
+        const decodedToken = new JwtHelperService().decodeToken(token);
+        // Check if 'rol' property exists in the decoded token before accessing it
+        if (decodedToken && decodedToken.rol) {
+          return decodedToken;
+        }
+      }
+    } else {
+      const user = {
+        rol: {
+          name: '',
+        },
+      };
+      return user;
+    }
   }
 }
