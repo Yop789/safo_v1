@@ -1,22 +1,23 @@
 import { TituloAppService } from './../services/titulo-app.service';
-import { Component } from '@angular/core';
-import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-  component = InicioSesionComponent;
+export class HomePage implements OnInit {
   constructor(
     private location: Location,
-    private tituloAppService: TituloAppService
+    private tituloAppService: TituloAppService,
+    private navCtrl: NavController
   ) {}
-
+  ngOnInit(): void {}
   goBack() {
-    this.location.back();
+    this.navCtrl.back({ animationDirection: 'back' });
+
     this.tituloAppService.back();
   }
   verificarSiEstaEnHome(): boolean {

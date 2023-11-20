@@ -64,19 +64,19 @@
         </div>
         <br />
         <div class="d-flex justify-content-start align-items-center ms-3">
+          <input type="checkbox" (change)="password = !password" />
+          <label for="mostrarContrasena" class="checkbox-label ms-2">
+            Mostrar contraseña</label
+          >
+        </div>
+        <br />
+        <div class="d-flex justify-content-start align-items-center ms-3">
           <input type="checkbox" />
           <label for="mostrarContrasena" class="checkbox-label ms-2">
             Aceptar terminos y condiciones
           </label>
         </div>
       </form>
-      <br />
-      <div class="d-flex justify-content-start align-items-center ms-3">
-        <input type="checkbox" [(ngModel)]="password" />
-        <label for="mostrarContrasena" class="checkbox-label ms-2">
-          Mostrar contraseña</label
-        >
-      </div>
 
       <div class="d-grid gap-2 container mt-2">
         <button

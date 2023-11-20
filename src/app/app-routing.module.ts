@@ -11,6 +11,8 @@ import { AdminPage } from './admin/admin.page';
 import { AdminPageModule } from './admin/admin.module';
 import { ClientPage } from './client/client.page';
 import { AuthService } from './services/auth.service';
+import { ReglaComponent } from './home/regla/regla.component';
+import { RecuperarComponent } from './home/recuperar/recuperar.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,8 @@ const routes: Routes = [
       { path: 'iniciosesio', component: InicioSesionComponent },
       { path: 'detalles', component: DetallesComponent },
       { path: 'usuOpc', component: OpcionUserComponent },
+      { path: 'ruleta', component: ReglaComponent },
+      { path: 'recuperar', component: RecuperarComponent },
       {
         path: 'admin',
         component: AdminPage,

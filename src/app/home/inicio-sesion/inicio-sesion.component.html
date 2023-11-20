@@ -49,27 +49,28 @@
           </div>
           <br />
         </div>
-        <br />
-        <input
-          type="checkbox"
-          [checked]="mostrarPassword"
-          (change)="mostrarPassword = !mostrarPassword"
-        />
-        <label for="mostrarContrasena" class="checkbox-label"
-          >Mostrar contraseña</label
-        >
-
-        <div class="d-grid gap-2 container">
+        <div class="d-flex justify-content-start align-items-center ms-3">
+          <input
+            type="checkbox"
+            (change)="mostrarPassword = !mostrarPassword"
+          />
+          <label for="mostrarContrasena" class="checkbox-label ms-2">
+            Mostrar contraseña</label
+          >
+        </div>
+        <div class="d-flex justify-content-start align-items-center ms-3 mt-3">
+          <a routerLink="/home/recuperar">Recuperar contraseña</a>
+        </div>
+        <div class="d-grid gap-2 container mt-4">
           <button type="button" class="btn idBColor" (click)="iniciarSesion()">
             Iniciar Sesión
           </button>
         </div>
 
-        <p class="ion-text-center idText">
-          ¿No tienes una cuenta? <a routerLink="/home/registro">Regístrate</a>
+        <p class="ion-text-center idText mt-3">
+          ¿No tienes una cuenta? <a routerLink="/home/usuOpc">Regístrate</a>
         </p>
-
-        <div class="d-grid gap-2 container mb-3">
+        <div class="d-grid gap-2 container mb-3 mt-3">
           <button type="button" class="btn idBColor" (click)="onClic()">
             <ion-icon name="logo-google"></ion-icon> Registrarse con Google
           </button>

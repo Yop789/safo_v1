@@ -10,7 +10,6 @@ export class TokenService {
   constructor() {}
 
   decodeToken() {
-    console.log(localStorage);
     if (localStorage.length > 0) {
       console.log(`no ha funcionado`);
       const token = '' + localStorage.getItem('token');

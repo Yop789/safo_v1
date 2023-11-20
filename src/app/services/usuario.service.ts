@@ -61,4 +61,10 @@ export class UsuarioService {
   loginByGoogle() {
     return this.afAuth.signInWithPopup(new GoogleAuthProvider());
   }
+  logaut() {
+    return this.afAuth.signOut();
+  }
+  resetPassword(email: string): Promise<void> {
+    return this.afAuth.sendPasswordResetEmail(email);
+  }
 }

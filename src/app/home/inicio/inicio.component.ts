@@ -1,9 +1,6 @@
 import { AuthService } from './../../services/auth.service';
 import { TokenService } from './../../services/token/token.service';
 import { Component, OnInit } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-inicio',
@@ -16,7 +13,6 @@ export class InicioComponent implements OnInit {
     private authService: AuthService
   ) {
     this.authService.authServer();
-    console.log(this.tokenService.decodeToken());
   }
 
   ngOnInit() {}

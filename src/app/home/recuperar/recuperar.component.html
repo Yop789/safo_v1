@@ -1,35 +1,28 @@
-<ion-header mode="ios" [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title class="idText"> Recuperar contraseña </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <div id="container" class="container" mode="ios">
     <ion-card>
       <form [formGroup]="formRecuperar">
-      <div class="container">
-        <br>
-        <p>Ingresa tu correo electronico para recuperar tu contraseña</p>
-        <br>
-          <input type="email" formControlName="email" placeholder="Email" class="form-control" >
-          <br>
-          <br>
-          <input type="password" formControlName="password" placeholder="Nueva Contraseña" class="form-control" >
-          <br>
-          <br>
-          <input type="password" formControlName="password" placeholder="Confirmar Contraseña" class="form-control" >
-          <br>
-          </div>
-    </form>
-      <br>
+        <div class="container">
+          <br />
+          <p>Ingresa tu correo electronico para recuperar tu contraseña</p>
+          <br />
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+            class="form-control"
+          />
+          <br />
+          <br />
+        </div>
+      </form>
+      <br />
       <div class="d-grid gap-2 container">
-        <button type="button" class="btn  idBColor" (click)="recuperar()">Recuperar</button>
+        <button type="button" class="btn idBColor" (click)="recuperar()">
+          Recuperar
+        </button>
       </div>
-      <br>
+      <br />
     </ion-card>
   </div>
 </ion-content>

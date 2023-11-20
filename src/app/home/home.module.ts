@@ -24,6 +24,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
 
 import { OpcionUserComponent } from './opcion-user/opcion-user.component';
+import { ReglaComponent } from './regla/regla.component';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { OpcionUserComponent } from './opcion-user/opcion-user.component';
     DetallesComponent,
     AgregarRecetaComponent,
     OpcionUserComponent,
+    ReglaComponent,
     MisPlatillosComponent,
   ],
   providers: [TituloAppService],

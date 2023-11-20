@@ -1,3 +1,4 @@
+import { MenuService } from './../../services/menu/menu.service';
 import { TokenService } from './../../services/token/token.service';
 import { ErroresFirebaseService } from './../../services/ErroresFirebase/errores-firebase.service';
 import { UserApiService } from './../../services/api/user.api.service';
@@ -26,7 +27,7 @@ export class InicioSesionComponent implements OnInit {
     private alertService: AlertService,
     private userApiService: UserApiService,
     private erroresFirebaseService: ErroresFirebaseService,
-    private tokenService: TokenService
+    private MenuService: MenuService
   ) {
     this.formInicioSesion = this.formBuilder.group({
       correo: [
@@ -70,6 +71,7 @@ export class InicioSesionComponent implements OnInit {
             .subscribe((user: any) => {
               if (user) {
                 localStorage.setItem('token', user.token);
+                this.MenuService.setUser(user.token);
                 this.router.navigate(['/home/inicio']);
               }
             });
@@ -95,6 +97,7 @@ export class InicioSesionComponent implements OnInit {
           (user: any) => {
             if (user) {
               localStorage.setItem('token', user.token);
+              this.MenuService.setUser(user.token);
               this.router.navigate(['/home/inicio']);
             }
           },
