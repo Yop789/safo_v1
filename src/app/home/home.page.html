@@ -1,7 +1,10 @@
 <ion-menu mode="ios" side="end" contentId="main-content">
-  <ion-header>
+  <ion-header [hidden]="avatar === ''">
     <ion-toolbar>
-      <ion-title class="titulo"> titulo </ion-title>
+      <ion-avatar>
+        <img [src]="avatar" />
+      </ion-avatar>
+      <ion-title>{{name}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">

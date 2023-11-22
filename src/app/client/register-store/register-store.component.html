@@ -1,0 +1,43 @@
+<div class="container">
+  <form action="">
+    <h3>Agrega tus datos</h3>
+
+    <ion-card>
+      <div class="mt-3 ms-3 me-3">
+        <ion-label>Nombre de la Tienda</ion-label>
+        <ion-input type="text" placeholder="ej. La palmas"></ion-input>
+      </div>
+    </ion-card>
+
+    <ion-card>
+      <div class="mt-3 ms-3 me-3">
+        <ion-label>Descripción</ion-label>
+        <ion-input
+          type="text"
+          placeholder="ej. Tienda de abarrotes "
+        ></ion-input>
+      </div>
+    </ion-card>
+    <ion-card>
+      <div class="mt-3 mb-3 ms-3 me-3">
+        <ion-label>Tipo de tienda</ion-label>
+        <ion-select placeholder="Typo de Tienda">
+          <ion-select-option value="f">Ropa</ion-select-option>
+          <ion-select-option value="m">Abarrotes</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-card>
+    <ion-card>
+      <div class="mt-3 ms-3 me-3">
+        <ion-label>Logo</ion-label>
+        <input
+          type="file"
+          id="fileInput"
+          name="fileInput"
+          class="form-control"
+          accept="image/*"
+        />
+      </div>
+    </ion-card>
+  </form>
+</div>

@@ -11,7 +11,6 @@ export class TokenService {
 
   decodeToken() {
     if (localStorage.length > 0) {
-      console.log(`no ha funcionado`);
       const token = '' + localStorage.getItem('token');
       if (token) {
         const decodedToken = new JwtHelperService().decodeToken(token);

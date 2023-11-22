@@ -35,6 +35,6 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('token');
     this.usuarioService.logaut();
     this.router.navigate(['/home/inicio']);
-    this.menu = this.menuService.getMenus();
+    this.menuService.setUser('Logaut');
   }
 }

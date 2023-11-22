@@ -1,7 +1,7 @@
 <ion-list mode="ios">
   <ion-menu-toggle *ngFor="let menu of menu">
     <ion-item routerLink (click)="pagina(menu.url)">
-      <ion-icon [name]="menu.icon"></ion-icon>
+      <ion-icon class="idText" [name]="menu.icon"></ion-icon>
       <ion-label>{{ menu.name }} </ion-label>
     </ion-item>
   </ion-menu-toggle>
