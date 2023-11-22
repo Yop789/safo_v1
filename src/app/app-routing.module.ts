@@ -13,6 +13,9 @@ import { ClientPage } from './client/client.page';
 import { AuthService } from './services/auth.service';
 import { ReglaComponent } from './home/regla/regla.component';
 import { RecuperarComponent } from './home/recuperar/recuperar.component';
+import { StoreComponent } from './client/store/store.component';
+import { RegisterStoreComponent } from './client/register-store/register-store.component';
+import { PublicacionesComponent } from './home/publicaciones/publicaciones.component';
 
 const routes: Routes = [
   {
@@ -39,6 +42,7 @@ const routes: Routes = [
       { path: 'usuOpc', component: OpcionUserComponent },
       { path: 'ruleta', component: ReglaComponent },
       { path: 'recuperar', component: RecuperarComponent },
+      { path: 'publicaciones', component: PublicacionesComponent },
       {
         path: 'admin',
         component: AdminPage,
@@ -57,6 +61,8 @@ const routes: Routes = [
             path: '',
             component: ClientPage,
           },
+          { path: 'tienda', component: StoreComponent },
+          { path: 'register-tienda', component: RegisterStoreComponent },
         ],
       },
     ],

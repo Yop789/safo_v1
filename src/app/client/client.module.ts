@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ClientPageRoutingModule } from './client-routing.module';
 
 import { ClientPage } from './client.page';
+import { StoreComponent } from './store/store.component';
+import { RegisterStoreComponent } from './register-store/register-store.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { ClientPage } from './client.page';
     IonicModule.forRoot({ mode: 'ios' }),
     ClientPageRoutingModule,
   ],
-  declarations: [ClientPage],
+  declarations: [ClientPage, StoreComponent, RegisterStoreComponent],
 })
 export class ClientPageModule {}

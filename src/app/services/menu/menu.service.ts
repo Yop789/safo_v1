@@ -56,12 +56,24 @@ export class MenuService {
       url: 'client',
       icon: 'megaphone-outline',
     },
+    {
+      name: 'Administración de Tiendas',
+      url: 'client/tienda',
+      icon: 'storefront-outline',
+    },
   ];
   public admin: Menu[] = [
     {
       name: 'admin',
       url: 'admin',
       icon: 'key-outline',
+    },
+  ];
+  public foraneo: Menu[] = [
+    {
+      name: 'Publicaciones',
+      url: 'publicaciones',
+      icon: 'albums-outline',
     },
   ];
 
@@ -77,10 +89,10 @@ export class MenuService {
       return [...this.inisiarSesion, ...this.defaul];
     } else if (rol === 'Client') {
       return [...this.client, ...this.defaul, ...this.logaut];
-    } else if (rol === 'admin') {
+    } else if (rol === 'Admin') {
       return [...this.admin, ...this.defaul, ...this.logaut];
     } else if (rol === 'foraneo') {
-      return [...this.defaul, ...this.logaut];
+      return [...this.foraneo, ...this.defaul, ...this.logaut];
     }
   }
 }

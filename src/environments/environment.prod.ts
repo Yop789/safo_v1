@@ -8,6 +8,6 @@ export const environment = {
     authDomain: 'safo-106aa.firebaseapp.com',
     messagingSenderId: '464115816867',
   },
-  
-  production: true
+  apiSafo: 'https://safo-api-v1.onrender.com/api/sofa/',
+  production: true,
 };
