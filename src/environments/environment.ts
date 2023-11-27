@@ -13,6 +13,10 @@ export const environment = {
     messagingSenderId: '464115816867',
   },
   apiSafo: 'http://localhost:3000/api/sofa/',
+  mapbox: {
+    accessToken:
+      'pk.eyJ1IjoianVhbmExMjMiLCJhIjoiY2xwZGIydGtkMDJ2eTJscGF6bjduc3drOSJ9.IevmBB2iIO389X1Mgx9lIA',
+  },
   production: false,
 };
 
