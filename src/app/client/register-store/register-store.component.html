@@ -28,8 +28,11 @@
         <div class="mt-3 mb-3 ms-3 me-3">
           <ion-label>Tipo de tienda</ion-label>
           <ion-select formControlName="tipoTienda" placeholder="Typo de Tienda">
-            <ion-select-option value="Ropa">Ropa</ion-select-option>
-            <ion-select-option value="Abarrotes">Abarrotes</ion-select-option>
+            <ion-select-option
+              *ngFor="let item of typeStore"
+              value="item.name"
+              >{{ item.name }}</ion-select-option
+            >
           </ion-select>
         </div>
       </ion-card>

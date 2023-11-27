@@ -1,3 +1,6 @@
+import { TypeStoreService } from './../../services/type/store.service';
+import { Store } from './../../models/store';
+import { Type } from './../../models/type';
 import { Router } from '@angular/router';
 import { AlertService } from './../../services/alert/alert.service';
 import { StoreService } from './../../services/api/store.service';
@@ -28,6 +31,7 @@ export class RegisterStoreComponent implements OnInit {
   lng: any = 0;
   user: User;
   qualifications: any = [];
+  typeStore: Type[] = [];
   constructor(
     private fb: FormBuilder,
     private tituloAppService: TituloAppService,
@@ -35,7 +39,8 @@ export class RegisterStoreComponent implements OnInit {
     private tokenService: TokenService,
     private storeService: StoreService,
     private alertService: AlertService,
-    private router: Router
+    private router: Router,
+    private typeStoreService: TypeStoreService
   ) {
     this.form = this.fb.group({
       nombreTienda: ['', Validators.required],
@@ -43,6 +48,7 @@ export class RegisterStoreComponent implements OnInit {
       tipoTienda: ['', Validators.required],
     });
     this.user = this.tokenService.decodeToken();
+    this.typeStore = this.typeStoreService.getTypes();
   }
 
   ngOnInit() {

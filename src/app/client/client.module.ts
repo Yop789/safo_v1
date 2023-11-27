@@ -9,12 +9,14 @@ import { ClientPageRoutingModule } from './client-routing.module';
 import { ClientPage } from './client.page';
 import { StoreComponent } from './store/store.component';
 import { RegisterStoreComponent } from './register-store/register-store.component';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatIconModule,
     IonicModule.forRoot({ mode: 'ios' }),
     ClientPageRoutingModule,
   ],
