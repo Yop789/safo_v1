@@ -20,15 +20,14 @@ export class StoreComponent implements OnInit {
     private storeService: StoreService,
     private typeStoreService: TypeStoreService
   ) {
+    this.tituloAppService.titulo = 'Administración de Tiendas';
     this.storeService.getStoreByIdUser().subscribe((stores: any) => {
       this.items = stores;
     });
-    this.type = typeStoreService.getTypes();
+    this.type = this.typeStoreService.getTypes();
   }
 
-  ngOnInit() {
-    this.tituloAppService.titulo = 'Administración de Tiendas';
-  }
+  ngOnInit() {}
   registerStore() {
     this.router.navigate(['/home/client/register-tienda']);
   }

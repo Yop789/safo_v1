@@ -83,7 +83,7 @@ export class RegisterStoreComponent implements OnInit {
       }
       this.storeService.createStore(formData).subscribe((data: any) => {
         this.alertService.presentAlert(data.msg);
-        this.router.navigate(['/home/client/tienda']);
+        this.router.navigateByUrl('/home/client/tienda');
       });
     }
   }

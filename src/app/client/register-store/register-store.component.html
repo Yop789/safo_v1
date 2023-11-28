@@ -30,7 +30,7 @@
           <ion-select formControlName="tipoTienda" placeholder="Typo de Tienda">
             <ion-select-option
               *ngFor="let item of typeStore"
-              value="item.name"
+              [value]="item.name"
               >{{ item.name }}</ion-select-option
             >
           </ion-select>
