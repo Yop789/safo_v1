@@ -85,6 +85,7 @@ export class MenuService {
 
   public getMenus(): any {
     const rol = this.tokenService.decodeToken().rol.name;
+    console.log(rol);
     if (rol === '') {
       return [...this.inisiarSesion, ...this.defaul];
     } else if (rol === 'Client') {

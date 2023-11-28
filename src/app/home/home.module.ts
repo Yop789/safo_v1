@@ -54,6 +54,7 @@ import { ReglaComponent } from './regla/regla.component';
     OpcionUserComponent,
     ReglaComponent,
     MisPlatillosComponent,
+    AgregarRecetaComponent,
   ],
   providers: [TituloAppService],
 })
