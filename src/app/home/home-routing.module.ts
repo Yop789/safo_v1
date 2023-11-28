@@ -14,7 +14,7 @@ export const routes: Routes = [
   // { path: 'inicio', component: InicioComponent },
   // { path: 'registro', component: RegistroComponent },
   // { path: 'iniciosesio', component: InicioSesionComponent },
-  // { path: 'agregarreceta', component: AgregarRecetaComponent },
+ { path: 'agregarreceta', component: AgregarRecetaComponent },
 ];
 
 @NgModule({
