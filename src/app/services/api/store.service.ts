@@ -27,4 +27,7 @@ export class StoreService {
 
     return this.http.get<Store[]>(this.url2 + user._id);
   }
+  deleteStoreByID(id: string): Observable<Store> {
+    return this.http.delete<Store>(this.url1 + '/' + id);
+  }
 }

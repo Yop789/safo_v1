@@ -18,6 +18,8 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import mapboxgl from 'mapbox-gl';
+import { ModalController } from '@ionic/angular';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-register-store',
@@ -35,12 +37,12 @@ export class RegisterStoreComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private tituloAppService: TituloAppService,
-    private mapboxService: MapboxService,
     private tokenService: TokenService,
     private storeService: StoreService,
     private alertService: AlertService,
     private router: Router,
-    private typeStoreService: TypeStoreService
+    private typeStoreService: TypeStoreService,
+    private modalCtrl: ModalController
   ) {
     this.form = this.fb.group({
       nombreTienda: ['', Validators.required],
@@ -53,20 +55,6 @@ export class RegisterStoreComponent implements OnInit {
 
   ngOnInit() {
     this.tituloAppService.titulo = 'Registro de Tiendas';
-    const map = this.mapboxService.initializeMap();
-    const marker = new mapboxgl.Marker({
-      color: '#314ccd',
-    });
-    // Agregar un evento de escucha para capturar la ubicación seleccionada
-    map.on('click', (event) => {
-      // Use the returned LngLat object to set the marker location
-      // https://docs.mapbox.com/mapbox-gl-js/api/#lnglat
-      marker.setLngLat(event.lngLat).addTo(map);
-
-      this.lng = event.lngLat.lng;
-      this.lat = event.lngLat.lat;
-      console.log(this.lng, this.lat);
-    });
   }
   onSubmit() {
     if (this.form.valid) {
@@ -92,5 +80,20 @@ export class RegisterStoreComponent implements OnInit {
     if (file) {
       this.file = file;
     } else this.file = null;
+  }
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: MapComponent,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      // this.lat = data.lat;
+      // this.lng = data.lng;
+      this.lat = data.lat;
+      this.lng = data.lng;
+    }
   }
 }

@@ -1,6 +1,6 @@
 <ion-content>
   <div class="container" style="margin-bottom: 100px">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form">
       <h3>Agrega tus datos</h3>
 
       <ion-card>
@@ -50,21 +50,28 @@
         </div>
       </ion-card>
       <!-- Sección del mapa (se mostrará solo si la variable de bandera es verdadera) -->
-      <ion-card style="height: 40vh">
-        <div id="map"></div>
-      </ion-card>
+      <div>
+        <button
+          style="background-color: white; color: black"
+          class="btn me-md-2"
+          (click)="openModal()"
+          type="button"
+        >
+          Seleccionar en mapa
+        </button>
+      </div>
 
       <div class="mt-4">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           <button
             style="background-color: white; color: black"
-            class="btn me-md-2"
+            class="btn me-md-2 mb-3"
           >
             Cancelar
           </button>
           <button
             class="btn idBColor"
-            type="submit"
+            (click)="onSubmit()"
             [disabled]="form.valid === false || file === null || lat === 0"
           >
             Guardar

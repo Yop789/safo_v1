@@ -10,6 +10,7 @@ import { ClientPage } from './client.page';
 import { StoreComponent } from './store/store.component';
 import { RegisterStoreComponent } from './register-store/register-store.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,11 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
     IonicModule.forRoot({ mode: 'ios' }),
     ClientPageRoutingModule,
   ],
-  declarations: [ClientPage, StoreComponent, RegisterStoreComponent],
+  declarations: [
+    ClientPage,
+    StoreComponent,
+    RegisterStoreComponent,
+    MapComponent,
+  ],
 })
 export class ClientPageModule {}
