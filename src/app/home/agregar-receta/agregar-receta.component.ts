@@ -28,7 +28,7 @@ export class AgregarRecetaComponent implements OnInit {
       type: ['', [Validators.required]], // Puedes asignar un valor por defecto
       difficulty: ['', [Validators.required]], // Puedes asignar un valor por defecto
       category: ['', [Validators.required]], // Puedes asignar un valor por defecto
-      image: ['', [Validators.required]], // Asigna la ruta de la imagen (puedes procesarla antes)
+      image: [' ', [Validators.required]], // Asigna la ruta de la imagen (puedes procesarla antes)
       ingredients: this.fb.array([]), // Aquí puedes construir un form array para los ingredientes
       steps: this.fb.array([]), // Aquí puedes construir un form array para los pasos
     });
