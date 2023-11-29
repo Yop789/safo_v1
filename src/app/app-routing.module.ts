@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'ruleta', component: ReglaComponent },
       { path: 'recuperar', component: RecuperarComponent },
       { path: 'publicaciones', component: PublicacionesComponent },
-      { path: 'agregarreceta', component: AgregarRecetaComponent },
+      { path: 'agregar-receta', component: AgregarRecetaComponent },
       {
         path: 'admin',
         component: AdminPage,

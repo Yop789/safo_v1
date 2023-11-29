@@ -75,6 +75,11 @@ export class MenuService {
       url: 'publicaciones',
       icon: 'albums-outline',
     },
+    {
+      name: 'Agregar resetas',
+      url: 'agregar-receta',
+      icon: 'book-outline',
+    },
   ];
 
   constructor(private tokenService: TokenService) {}
@@ -85,7 +90,6 @@ export class MenuService {
 
   public getMenus(): any {
     const rol = this.tokenService.decodeToken().rol.name;
-    console.log(rol);
     if (rol === '') {
       return [...this.inisiarSesion, ...this.defaul];
     } else if (rol === 'Client') {
