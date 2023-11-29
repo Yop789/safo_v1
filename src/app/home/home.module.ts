@@ -55,7 +55,11 @@ import { AcercaNosotrosComponent } from './acerca-nosotros/acerca-nosotros.compo
     OpcionUserComponent,
     ReglaComponent,
     MisPlatillosComponent,
+
     AcercaNosotrosComponent,
+
+    AgregarRecetaComponent,
+
   ],
   providers: [TituloAppService],
 })

@@ -1,44 +1,75 @@
-<ion-header mode="ios" [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title class="idText"> Recuperar contraseña </ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="container">
+  <ion-card>
+    <form [formGroup]="formReceta">
+      <h3>Agregar Receta</h3>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <div id="container" class="container" mode="ios">
-    <ion-card>
-
-      <form [formGroup]="formReceta">
-        <br>
-        <br>
-        <p>Selecciona una Imagen</p>
-        <br>
-        <input type="file" (change)="onFileSelected($event)">
-        <br>
-        <br>
-        <input formControlName="nombre" placeholder="Nombre de la receta">
-        <br>
-        <br>
-        <input formControlName="tiempo" placeholder="Tiempo de preparación">
-        <br>
-        <br>
-        <input formControlName="ingredientes" placeholder="Ingredientes">
-        <br>
-        <br>
-        <input formControlName="pasos" placeholder="Pasos para preparar la receta">
-        <br>
-        <br>
-      </form>
-      <br>
-      <div class="d-grid gap-2 container">
-        <button type="button" class="btn  idBColor" (click)="agregarReceta()">Recuperar</button>
-        <button type="button" class="btn  idBColor2" (click)="cancelar()">Cancelar</button>
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Selecciona una Imagen</ion-label>
+          <input type="file" (change)="onFileSelected($event)">
+        </ion-item>
       </div>
-      <br>
-      <br>
-    </ion-card>
-  </div>
-</ion-content>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Nombre de la receta</ion-label>
+          <ion-input formControlName="name" placeholder="Ej. Nombre de la receta"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Descripción</ion-label>
+          <ion-input formControlName="description" placeholder="Ej. Descripción de la receta"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Duración</ion-label>
+          <ion-input formControlName="duration" placeholder="Ej. Duración de la receta"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Tipo</ion-label>
+          <ion-input formControlName="type" placeholder="Ej. Tipo de la receta"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Dificultad</ion-label>
+          <ion-input formControlName="difficulty" placeholder="Ej. Dificultad de la receta"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Categoría</ion-label>
+          <ion-input formControlName="category" placeholder="Ej. Categoría de la receta"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Ingredientes</ion-label>
+          <ion-input formControlName="ingredients" placeholder="Ej. Ingredientes de la receta"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-label position="floating">Pasos</ion-label>
+          <ion-input formControlName="steps" placeholder="Ej. Pasos de la receta"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="d-grid gap-2 container">
+        <ion-button color="primary" (click)="agregarReceta()">Agregar</ion-button>
+        <ion-button color="danger" (click)="cancelar()">Cancelar</ion-button>
+      </div>
+    </form>
+  </ion-card>
+</div>
