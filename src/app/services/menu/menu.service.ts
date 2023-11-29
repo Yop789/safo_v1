@@ -38,7 +38,7 @@ export class MenuService {
     },
     {
       name: 'acerca',
-      url: '#',
+      url: 'acerca',
       icon: 'alert-outline',
     },
   ];

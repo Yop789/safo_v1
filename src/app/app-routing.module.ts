@@ -16,7 +16,10 @@ import { RecuperarComponent } from './home/recuperar/recuperar.component';
 import { StoreComponent } from './client/store/store.component';
 import { RegisterStoreComponent } from './client/register-store/register-store.component';
 import { PublicacionesComponent } from './home/publicaciones/publicaciones.component';
+import { AcercaNosotrosComponent } from './home/acerca-nosotros/acerca-nosotros.component';
+
 import { AgregarRecetaComponent } from './home/agregar-receta/agregar-receta.component';
+
 
 const routes: Routes = [
   {
@@ -44,6 +47,8 @@ const routes: Routes = [
       { path: 'ruleta', component: ReglaComponent },
       { path: 'recuperar', component: RecuperarComponent },
       { path: 'publicaciones', component: PublicacionesComponent },
+
+      { path: 'acerca', component: AcercaNosotrosComponent },
       { path: 'agregarreceta', component: AgregarRecetaComponent },
       {
         path: 'admin',
