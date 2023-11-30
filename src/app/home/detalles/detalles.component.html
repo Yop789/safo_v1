@@ -1,52 +1,52 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>Nombre de la receta</ion-card-subtitle>
-  </ion-card-header>
+<ion-content>
+  <ion-card *ngIf="data">
+    <ion-card-header>
+      <ion-card-subtitle>{{
+        data.name || "nombre de la receta"
+      }}</ion-card-subtitle>
+    </ion-card-header>
 
-  <ion-card-content>
-    <ion-row>
-      <ion-col>
-        <ion-card-subtitle>Detalla de la receta</ion-card-subtitle>
-        <ion-card-content>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </ion-card-content>
-        <ion-card-subtitle>Ingredientes</ion-card-subtitle>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-card-subtitle>Detalla de la receta</ion-card-subtitle>
+          <ion-card-content>
+            {{ data.description }}
+          </ion-card-content>
+          <ion-card-subtitle>Ingredientes</ion-card-subtitle>
 
-        <ion-list lines="none">
-          <ion-item>
-            <ion-label>* Lechuga 3 p</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label>No Lines</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label>No Lines</ion-label>
-          </ion-item>
-        </ion-list>
-        <ion-card-subtitle>Preparación</ion-card-subtitle>
-      </ion-col>
-      <ion-col
-        ><ion-img src="assets/icon/favicon.png"></ion-img>
-        <ngb-rating
-          [max]="5"
-          [(rate)]="starRating"
-          style="font-size: 35px"
-          [readonly]="false"
-        ></ngb-rating>
-        Tiempo: 30 min
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad culpa maiores
-      incidunt officia maxime, aspernatur distinctio sit corrupti magni labore
-      ducimus magnam esse cupiditate explicabo vel omnis corporis vitae. Eaque!
-    </ion-row>
-    <ion-card-subtitle>Consejos de preparación </ion-card-subtitle>
-    <ion-row>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt vitae
-      ducimus dignissimos doloribus consequuntur eum molestiae optio possimus!
-      Quis ratione possimus quas quidem vitae. Et tempora fuga laborum nihil
-      temporibus!
-    </ion-row>
-  </ion-card-content>
-</ion-card>
+          <ion-list lines="none">
+            <ion-item *ngFor="let item of data.ingredients">
+              <ion-label
+                >* {{ item.name }} {{ item.type }} {{ item.quantity }}
+                {{ item.unit }}
+              </ion-label>
+            </ion-item>
+          </ion-list>
+          <ion-col
+            ><ion-img [src]="data.image"></ion-img>
+            <div class="d-flex align-items-center justify-content-center">
+              <ngb-rating
+                [max]="5"
+                [(rate)]="starRating"
+                style="font-size: 35px"
+                [readonly]="true"
+                (click)="openModalInstrucciones()"
+              ></ngb-rating>
+              <span class="ml-2">Tiempo: {{ data.duration }} min</span>
+            </div>
+          </ion-col>
+          <ion-card-subtitle>Preparación</ion-card-subtitle>
+          <div *ngFor="let item of data.steps">
+            <ion-item>
+              <ion-label>Paso {{ item.step }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-text>{{ item.description }}</ion-text>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

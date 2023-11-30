@@ -1,37 +1,42 @@
-import { AlertService } from './../../services/alert/alert.service';
 import { User } from './../../models/user';
-import { TokenService } from './../../services/token/token.service';
-import { Ingredient } from './../../models/ingredient';
 import { Step } from './../../models/step';
+import { Ingredient } from './../../models/ingredient';
+import { Recipe } from './../../models/recipe';
+import { RecetaService } from './../../services/receta.service';
+import { AlertService } from './../../services/alert/alert.service';
+import { TokenService } from './../../services/token/token.service';
+import { TituloAppService } from './../../services/titulo-app.service';
 import { Component, OnInit } from '@angular/core';
-import { TituloAppService } from '../../services/titulo-app.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RecetaService } from '../../services/receta.service';
-
-import { Recipe } from '../../models/recipe'; // Importa los modelos
 import { IngredientesComponent } from '../ingredientes/ingredientes.component';
-import { ModalController } from '@ionic/angular';
 import { InstruccionesComponent } from '../instrucciones/instrucciones.component';
 
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+
+import { ModalController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
-  selector: 'app-agregar-receta',
-  templateUrl: './agregar-receta.component.html',
-  styleUrls: ['./agregar-receta.component.scss'],
+  selector: 'app-edit-recetas',
+  templateUrl: './edit-recetas.component.html',
+  styleUrls: ['./edit-recetas.component.scss'],
 })
-export class AgregarRecetaComponent implements OnInit {
+export class EditRecetasComponent implements OnInit {
   formReceta: FormGroup;
   imageUrl: string = '';
   ingredientes: Ingredient[] = [];
   step: Step[] = [];
   file: any = null;
   user: User;
+  id: string;
   constructor(
     private tituloAppService: TituloAppService,
     private fb: FormBuilder,
     private recetaService: RecetaService,
     private modalCtrl: ModalController,
     private tokenService: TokenService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.formReceta = this.fb.group({
       name: ['', [Validators.required]],
@@ -46,6 +51,7 @@ export class AgregarRecetaComponent implements OnInit {
 
   ngOnInit() {
     this.tituloAppService.titulo = 'Agregar Receta';
+    this.getRecet();
   }
 
   agregarReceta() {
@@ -84,18 +90,16 @@ export class AgregarRecetaComponent implements OnInit {
       if (this.file) {
         formData.append('img', this.file);
       }
-      this.recetaService.createRecipe(formData).subscribe((result: any) => {
-        console.log('Receta creada exitosamente:', result);
-        this.alertService.presentAlert(result.message);
-      });
+      this.recetaService
+        .updateRecipe(formData, this.id)
+        .subscribe((result: any) => {
+          console.log('Receta creada exitosamente:', result);
+          this.alertService.presentAlert(result.message);
+        });
     }
   }
   cancelar() {
-    // Lógica para cancelar
-    this.formReceta.reset();
-    this.ingredientes = [];
-    this.step = [];
-    this.imageUrl = null;
+    this.publicaciones();
   }
 
   onFileSelected(event: any) {
@@ -149,5 +153,21 @@ export class AgregarRecetaComponent implements OnInit {
     if (role === 'confirm') {
       this.step = data;
     }
+  }
+  getRecet() {
+    this.id = this.route.snapshot.params['id'];
+    if (this.id != null) {
+      this.recetaService.getRecipeById(this.id).subscribe((resp: Recipe) => {
+        this.formReceta.patchValue(resp);
+        this.ingredientes = resp.ingredients;
+        this.step = resp.steps;
+        this.imageUrl = resp.image;
+      });
+    } else {
+      this.publicaciones();
+    }
+  }
+  publicaciones() {
+    this.router.navigate(['/home/publicaciones']);
   }
 }

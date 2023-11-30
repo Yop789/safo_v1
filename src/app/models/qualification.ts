@@ -1,4 +1,5 @@
 export interface Qualification {
-    idUser: string;
-    qualification: number;
-  }
+  idUser: string;
+  qualification: number;
+  comment?: string;
+}

@@ -19,6 +19,7 @@ import { PublicacionesComponent } from './home/publicaciones/publicaciones.compo
 import { AcercaNosotrosComponent } from './home/acerca-nosotros/acerca-nosotros.component';
 
 import { AgregarRecetaComponent } from './home/agregar-receta/agregar-receta.component';
+import { EditRecetasComponent } from './home/edit-recetas/edit-recetas.component';
 
 const routes: Routes = [
   {
@@ -47,9 +48,9 @@ const routes: Routes = [
       { path: 'recuperar', component: RecuperarComponent },
       { path: 'publicaciones', component: PublicacionesComponent },
       { path: 'agregar-receta', component: AgregarRecetaComponent },
-
+      { path: 'edit-receta/:id', component: EditRecetasComponent },
       { path: 'acerca', component: AcercaNosotrosComponent },
-      { path: 'agregarreceta', component: AgregarRecetaComponent },
+      { path: 'view/:id', component: DetallesComponent },
       {
         path: 'admin',
         component: AdminPage,

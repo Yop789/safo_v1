@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title style="color: #5cb85c">Ingredientes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Agregar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="form">
+    <div class="mt-3 ms-3 me-3">
+      <ion-item>
+        <ion-input
+          type="number"
+          formControlName="step"
+          placeholder="Ej. Nombre del ingrediente"
+        ></ion-input>
+      </ion-item>
+    </div>
+    <div class="mt-3 ms-3 me-3">
+      <ion-item>
+        <ion-textarea
+          type="number"
+          formControlName="description"
+          placeholder="Ej. Descripción"
+        >
+        </ion-textarea>
+      </ion-item>
+    </div>
+
+    <div class="mt-3 ms-3 me-3">
+      <button
+        class="btn me-1"
+        [disabled]="form.valid === false || edit"
+        (click)="agregarIngrediente()"
+      >
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </button>
+      <button
+        class="btn me-1"
+        [disabled]="form.valid === false || edit"
+        (click)="limpiar()"
+      >
+        <ion-icon slot="close-only" name="close"></ion-icon>
+      </button>
+      <button
+        class="btn me-1"
+        [disabled]="!edit"
+        (click)="actualizarIngrediente()"
+      >
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </button>
+      <button
+        class="btn me-1"
+        [disabled]="!edit"
+        (click)="eliminarIngrediente()"
+      >
+        <ion-icon name="trash-outline"></ion-icon>
+      </button>
+    </div>
+  </form>
+  <ion-card>
+    <ion-card-subtitle>Ingredientes</ion-card-subtitle>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Numero</ion-label>
+        <ion-label>Descripción</ion-label>
+      </ion-item>
+      <ion-item
+        *ngFor="let item of listInstr; let i = index"
+        (click)="select(i)"
+      >
+        <ion-label>{{ item.step }}</ion-label>
+        <ion-label>{{ item.description }}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -26,6 +26,11 @@ import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
 import { OpcionUserComponent } from './opcion-user/opcion-user.component';
 import { ReglaComponent } from './regla/regla.component';
 import { AcercaNosotrosComponent } from './acerca-nosotros/acerca-nosotros.component';
+import { IngredientesComponent } from './ingredientes/ingredientes.component';
+import { InstruccionesComponent } from './instrucciones/instrucciones.component';
+import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { EditRecetasComponent } from './edit-recetas/edit-recetas.component';
+import { CalificacioComentarComponent } from './calificacio-comentar/calificacio-comentar.component';
 
 @NgModule({
   imports: [
@@ -55,11 +60,13 @@ import { AcercaNosotrosComponent } from './acerca-nosotros/acerca-nosotros.compo
     OpcionUserComponent,
     ReglaComponent,
     MisPlatillosComponent,
-
+    InstruccionesComponent,
     AcercaNosotrosComponent,
-
+    IngredientesComponent,
     AgregarRecetaComponent,
-
+    PublicacionesComponent,
+    EditRecetasComponent,
+    CalificacioComentarComponent,
   ],
   providers: [TituloAppService],
 })

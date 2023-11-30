@@ -3,22 +3,45 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
+import { Qualification } from '../models/qualification';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RecetaService {
-
   usersApi = `${environment.apiSafo}reset`;
+  comenRecipeApi = `${environment.apiSafo}resetqual`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  createRecipe(recipe: Recipe): Observable <Recipe> {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post<Recipe>(this.usersApi,recipe, { headers: headers });
+  createRecipe(recipe: any): Observable<Recipe> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.post<Recipe>(this.usersApi, recipe, { headers: header });
   }
 
+  getRecipe(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.usersApi);
+  }
+  getRecipeById(id: any): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.usersApi}/${id}`);
+  }
+  deleteRecipeById(id: any): Observable<any> {
+    return this.http.delete(`${this.usersApi}/${id}`);
+  }
+  updateRecipe(recipe: any, id: any): Observable<Recipe> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.put<Recipe>(`${this.usersApi}/${id}`, recipe, {
+      headers: header,
+    });
+  }
+
+  createQualification(
+    id: string,
+    qualification: Qualification
+  ): Observable<any> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.post(`${this.comenRecipeApi}/${id}`, qualification, {
+      headers: header,
+    });
+  }
 }
-
-
-
