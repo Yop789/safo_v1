@@ -11,6 +11,8 @@ import { StoreComponent } from './store/store.component';
 import { RegisterStoreComponent } from './register-store/register-store.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MapComponent } from './map/map.component';
+import { EditTiendaComponent } from './edit-tienda/edit-tienda.component';
+import { ViewStoreComponent } from './view-store/view-store.component';
 
 @NgModule({
   imports: [
@@ -26,6 +28,8 @@ import { MapComponent } from './map/map.component';
     StoreComponent,
     RegisterStoreComponent,
     MapComponent,
+    EditTiendaComponent,
+    ViewStoreComponent,
   ],
 })
 export class ClientPageModule {}

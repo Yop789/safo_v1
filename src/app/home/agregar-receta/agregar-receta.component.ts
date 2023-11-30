@@ -12,6 +12,7 @@ import { Recipe } from '../../models/recipe'; // Importa los modelos
 import { IngredientesComponent } from '../ingredientes/ingredientes.component';
 import { ModalController } from '@ionic/angular';
 import { InstruccionesComponent } from '../instrucciones/instrucciones.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-receta',
@@ -31,7 +32,8 @@ export class AgregarRecetaComponent implements OnInit {
     private recetaService: RecetaService,
     private modalCtrl: ModalController,
     private tokenService: TokenService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router
   ) {
     this.formReceta = this.fb.group({
       name: ['', [Validators.required]],
@@ -48,26 +50,6 @@ export class AgregarRecetaComponent implements OnInit {
     this.tituloAppService.titulo = 'Agregar Receta';
   }
 
-  agregarReceta() {
-    if (this.formReceta.valid) {
-      const nuevaReceta: Recipe = this.formReceta.value;
-
-      this.recetaService.createRecipe(nuevaReceta).subscribe(
-        (response) => {
-          console.log('Receta creada exitosamente:', response);
-          // Puedes agregar lógica adicional después de crear la receta
-        },
-        (error) => {
-          console.error('Error al crear la receta:', error);
-          // Puedes manejar el error aquí
-        }
-      );
-    } else {
-      console.log(
-        'Formulario no válido. Asegúrate de completar todos los campos.'
-      );
-    }
-  }
   summit() {
     if (this.formReceta.valid) {
       const formData = new FormData();
@@ -85,8 +67,8 @@ export class AgregarRecetaComponent implements OnInit {
         formData.append('img', this.file);
       }
       this.recetaService.createRecipe(formData).subscribe((result: any) => {
-        console.log('Receta creada exitosamente:', result);
         this.alertService.presentAlert(result.message);
+        this.router.navigateByUrl(`home/publicaciones`);
       });
     }
   }

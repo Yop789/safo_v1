@@ -46,5 +46,33 @@ export class MapboxService {
     return this.map;
   }
 
+  mapaLngLat(lng: any, lat: any): mapboxgl.Map {
+    this.map = new mapboxgl.Map({
+      accessToken: '' + environment.mapbox.accessToken,
+      container: 'map',
+      style: 'mapbox://styles/safo2023/clpg36elz008d01qme4896cuu',
+      center: [lat, lng],
+      zoom: this.zoom,
+    });
+
+    this.geocoder = new MapboxGeocoder({
+      accessToken: environment.mapbox.accessToken,
+      mapboxgl: mapboxgl,
+    });
+
+    this.map.addControl(this.geocoder);
+    this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(new mapboxgl.FullscreenControl());
+    this.map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+      })
+    );
+    new mapboxgl.Marker().setLngLat([lat, lng]).addTo(this.map);
+    return this.map;
+  }
   // Método para llamar al evento desde fuera de la clase
 }

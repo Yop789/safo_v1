@@ -1,6 +1,6 @@
 import { MapboxService } from './../../services/mapbox/mapbox.service';
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import mapboxgl from 'mapbox-gl';
 
 @Component({
@@ -14,8 +14,12 @@ export class MapComponent implements OnInit {
   lat: number;
   constructor(
     private modalCtrl: ModalController,
-    private mapboxService: MapboxService
-  ) {}
+    private mapboxService: MapboxService,
+    public navParams: NavParams
+  ) {
+    this.lat = this.navParams.get('lat');
+    this.lng = this.navParams.get('lng');
+  }
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
@@ -26,19 +30,38 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    const map = this.mapboxService.initializeMap();
-    const marker = new mapboxgl.Marker({
-      color: '#314ccd',
-    });
-    // Agregar un evento de escucha para capturar la ubicación seleccionada
-    map.on('click', (event) => {
-      // Use the returned LngLat object to set the marker location
-      // https://docs.mapbox.com/mapbox-gl-js/api/#lnglat
-      marker.setLngLat(event.lngLat).addTo(map);
+    if (!this.lat) {
+      console.log('No se ha seleccionado una ubicación');
+      const map = this.mapboxService.initializeMap();
+      const marker = new mapboxgl.Marker({
+        color: '#314ccd',
+      });
+      // Agregar un evento de escucha para capturar la ubicación seleccionada
+      map.on('click', (event) => {
+        // Use the returned LngLat object to set the marker location
+        // https://docs.mapbox.com/mapbox-gl-js/api/#lnglat
+        marker.setLngLat(event.lngLat).addTo(map);
 
-      this.lng = event.lngLat.lng;
-      this.lat = event.lngLat.lat;
-      console.log(this.lng, this.lat);
-    });
+        this.lng = event.lngLat.lng;
+        this.lat = event.lngLat.lat;
+        console.log(this.lng, this.lat);
+      });
+    } else {
+      console.log('Ubicación seleccionada', this.lat, this.lng);
+      const map = this.mapboxService.mapaLngLat(this.lat, this.lng);
+      const marker = new mapboxgl.Marker({
+        color: '#314ccd',
+      });
+      // Agregar un evento de escucha para capturar la ubicación seleccionada
+      map.on('click', (event) => {
+        // Use the returned LngLat object to set the marker location
+        // https://docs.mapbox.com/mapbox-gl-js/api/#lnglat
+        marker.setLngLat(event.lngLat).addTo(map);
+
+        this.lng = event.lngLat.lng;
+        this.lat = event.lngLat.lat;
+        console.log(this.lng, this.lat);
+      });
+    }
   }
 }

@@ -81,10 +81,13 @@ export class StoreComponent implements OnInit {
     console.log(ev.detail.data.action);
     switch (ev.detail.data.action) {
       case 'edit':
-        this.router.navigate(['/home/client/edit-tienda', ev.detail.id]);
+        this.router.navigate(['/home/client/edit-tienda', this.idStore]);
         break;
       case 'cancel':
         this.idStore = '';
+        break;
+      case 'share':
+        this.router.navigate(['home/client/view-tienda', this.idStore]);
         break;
       case 'delete':
         this.eliminar();

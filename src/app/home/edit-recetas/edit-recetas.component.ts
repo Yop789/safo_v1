@@ -54,26 +54,6 @@ export class EditRecetasComponent implements OnInit {
     this.getRecet();
   }
 
-  agregarReceta() {
-    if (this.formReceta.valid) {
-      const nuevaReceta: Recipe = this.formReceta.value;
-
-      this.recetaService.createRecipe(nuevaReceta).subscribe(
-        (response) => {
-          console.log('Receta creada exitosamente:', response);
-          // Puedes agregar lógica adicional después de crear la receta
-        },
-        (error) => {
-          console.error('Error al crear la receta:', error);
-          // Puedes manejar el error aquí
-        }
-      );
-    } else {
-      console.log(
-        'Formulario no válido. Asegúrate de completar todos los campos.'
-      );
-    }
-  }
   summit() {
     if (this.formReceta.valid) {
       const formData = new FormData();
@@ -95,6 +75,7 @@ export class EditRecetasComponent implements OnInit {
         .subscribe((result: any) => {
           console.log('Receta creada exitosamente:', result);
           this.alertService.presentAlert(result.message);
+          this.router.navigateByUrl(`home/publicaciones`);
         });
     }
   }

@@ -30,4 +30,13 @@ export class StoreService {
   deleteStoreByID(id: string): Observable<Store> {
     return this.http.delete<Store>(this.url1 + '/' + id);
   }
+  getStoreByID(id: string): Observable<Store> {
+    return this.http.get<Store>(this.url1 + '/' + id);
+  }
+  updateStore(id: string, store: any): Observable<Store> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.put<Store>(this.url1 + '/' + id, store, {
+      headers: header,
+    });
+  }
 }

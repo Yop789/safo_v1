@@ -51,10 +51,10 @@ export class PublicacionesComponent implements OnInit {
   ) {
     this.tituloAppService.titulo = 'Publicaciones de recetas';
   }
-
-  ngOnInit() {
-    this.get();
+  ionViewDidEnter() {
+    this.get(); // Llama a una función que carga los datos
   }
+  ngOnInit() {}
   open(id) {
     this.isActionSheetOpen = true;
     this.id = id;

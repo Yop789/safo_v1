@@ -8,9 +8,7 @@ import { InicioSesionComponent } from './home/inicio-sesion/inicio-sesion.compon
 import { DetallesComponent } from './home/detalles/detalles.component';
 import { OpcionUserComponent } from './home/opcion-user/opcion-user.component';
 import { AdminPage } from './admin/admin.page';
-import { AdminPageModule } from './admin/admin.module';
 import { ClientPage } from './client/client.page';
-import { AuthService } from './services/auth.service';
 import { ReglaComponent } from './home/regla/regla.component';
 import { RecuperarComponent } from './home/recuperar/recuperar.component';
 import { StoreComponent } from './client/store/store.component';
@@ -20,6 +18,9 @@ import { AcercaNosotrosComponent } from './home/acerca-nosotros/acerca-nosotros.
 
 import { AgregarRecetaComponent } from './home/agregar-receta/agregar-receta.component';
 import { EditRecetasComponent } from './home/edit-recetas/edit-recetas.component';
+import { EditTiendaComponent } from './client/edit-tienda/edit-tienda.component';
+import { ViewStoreComponent } from './client/view-store/view-store.component';
+import { PrincipalComponent } from './client/principal/principal.component';
 
 const routes: Routes = [
   {
@@ -67,10 +68,12 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: ClientPage,
+            component: PrincipalComponent,
           },
           { path: 'tienda', component: StoreComponent },
           { path: 'register-tienda', component: RegisterStoreComponent },
+          { path: 'edit-tienda/:id', component: EditTiendaComponent },
+          { path: 'view-tienda/:id', component: ViewStoreComponent },
         ],
       },
     ],
