@@ -1,9 +1,15 @@
 <ion-content>
   <ion-card *ngIf="data">
     <ion-card-header>
-      <ion-card-subtitle>{{
+      <ion-card-title style="text-align: center">{{
         data.name || "nombre de la receta"
-      }}</ion-card-subtitle>
+      }}</ion-card-title>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-img [src]="data.idUser.avatar"></ion-img>
+        </ion-avatar>
+        <ion-label>{{ data.idUser.name }}</ion-label>
+      </ion-item>
     </ion-card-header>
 
     <ion-card-content>
@@ -24,7 +30,7 @@
             </ion-item>
           </ion-list>
           <ion-col
-            ><ion-img [src]="data.image"></ion-img>
+            ><ion-img style="height: 308px" [src]="data.image"></ion-img>
             <div class="d-flex align-items-center justify-content-center">
               <ngb-rating
                 [max]="5"

@@ -44,4 +44,20 @@ export class RecetaService {
       headers: header,
     });
   }
+  getQualification(id: string): Observable<Qualification[]> {
+    return this.http.get<Qualification[]>(`${this.comenRecipeApi}/${id}`);
+  }
+
+  deleteQualification(id: string, idQual: string): Observable<any> {
+    const data = {
+      _id: idQual,
+    };
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.http.delete(`${this.comenRecipeApi}/${id}`, {
+      headers,
+      body: data,
+    });
+  }
 }

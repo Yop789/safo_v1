@@ -2,7 +2,7 @@
   <button class="btn idBColor" (click)="publicar()">Publicar</button>
 
   <ion-row>
-    <ion-col size-md="4" *ngFor="let item of items" (click)="open(item._id)">
+    <ion-col size-md="2" *ngFor="let item of items" (click)="open(item._id)">
       <ion-card>
         <img alt="Silhouette of mountains" [src]="item.image" />
         <ion-card-header>

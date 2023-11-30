@@ -4,7 +4,7 @@ import { Qualification } from './qualification';
 
 export interface Recipe {
   _id?: string;
-  idUser: string;
+  idUser: any;
   name: string;
   description: string;
   qualification: Qualification[];

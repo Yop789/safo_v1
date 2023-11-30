@@ -1,3 +1,4 @@
+import { DataC } from './../../models/data-c';
 import { AlertService } from './../../services/alert/alert.service';
 import { Qualification } from './../../models/qualification';
 import { User } from './../../models/user';
@@ -7,7 +8,6 @@ import { RecetaService } from './../../services/receta.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController, NavParams } from '@ionic/angular';
-import { Step } from 'src/app/models/step';
 
 @Component({
   selector: 'app-calificacio-comentar',
@@ -15,11 +15,32 @@ import { Step } from 'src/app/models/step';
   styleUrls: ['./calificacio-comentar.component.scss'],
 })
 export class CalificacioComentarComponent implements OnInit {
+  isActionSheetOpen = false;
+  public actionSheetButtons = [
+    {
+      text: 'Eliminar',
+      role: 'destructive',
+      data: {
+        action: 'delete',
+      },
+    },
+
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      data: {
+        action: 'cancel',
+      },
+    },
+  ];
   form: FormGroup;
   list;
   index: number = 0;
   edit: boolean = false;
   starRating = 0;
+  user: User;
+  data: DataC[] = [];
+  idComent: string;
   constructor(
     private modalCtrl: ModalController,
     private fb: FormBuilder,
@@ -32,7 +53,9 @@ export class CalificacioComentarComponent implements OnInit {
       comment: ['', [Validators.required]],
     });
     this.list = this.navParams.get('Calif');
-    console.log(this.list);
+
+    this.getCalif();
+    this.getUser();
   }
 
   ngOnInit() {}
@@ -42,10 +65,8 @@ export class CalificacioComentarComponent implements OnInit {
   }
 
   confirm() {
-    const user: User = this.tokenService.decodeToken();
-
     const data: Qualification = {
-      idUser: user._id,
+      idUser: this.user._id,
       qualification: this.starRating,
       comment: this.form.value.comment,
     };
@@ -53,8 +74,51 @@ export class CalificacioComentarComponent implements OnInit {
       .createQualification(this.list.idReceta, data)
       .subscribe((res) => {
         this.alertService.presentAlert(res.message);
-        // return this.modalCtrl.dismiss(this.list, 'confirm');
+        this.getCalif();
+        this.limpiar();
       });
     return null;
+  }
+  getCalif() {
+    this.recetaService
+      .getQualification(this.list.idReceta)
+      .subscribe((res: any) => {
+        this.data = res.qualification;
+      });
+  }
+  limpiar() {
+    this.form.reset();
+    this.starRating = 0;
+  }
+  getUser() {
+    this.user = this.tokenService.decodeToken();
+  }
+  action(ev) {
+    this.isActionSheetOpen = false;
+
+    switch (ev.detail.data.action) {
+      case 'cancel':
+        break;
+      case 'delete':
+        this.deleteComent();
+        break;
+
+      default:
+        break;
+    }
+  }
+  open(id) {
+    this.isActionSheetOpen = true;
+    this.idComent = id;
+    // console.log(id);
+  }
+  deleteComent() {
+    this.recetaService
+      .deleteQualification(this.list.idReceta, this.idComent)
+      .subscribe((res) => {
+        this.alertService.presentAlert(res.message);
+        this.getCalif();
+        this.limpiar();
+      });
   }
 }
