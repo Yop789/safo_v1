@@ -1,3 +1,5 @@
+import { AlertService } from './../../services/alert/alert.service';
+import { TokenService } from './../../services/token/token.service';
 import { TituloAppService } from './../../services/titulo-app.service';
 import { StoreService } from './../../services/api/store.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,7 +25,9 @@ export class ViewStoreComponent implements OnInit {
     private route: ActivatedRoute,
     private storeService: StoreService,
     private tituloAppService: TituloAppService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private tokenService: TokenService,
+    private alertService: AlertService
   ) {}
   ionViewDidEnter() {
     this.getStoreBy();
@@ -39,16 +43,21 @@ export class ViewStoreComponent implements OnInit {
     });
   }
   async openModalInstrucciones() {
-    const modal = await this.modalCtrl.create({
-      component: CalificarStoreComponent,
-      componentProps: {
-        Calif: { idStore: this.idStore }, // Pasa tu lista de ingredientes aquí
-      },
-    });
-    modal.present();
-    const { data, role } = await modal.onWillDismiss();
-    if (role != 'confirm') {
-      this.getStoreBy();
+    const user = this.tokenService.decodeToken();
+    if (user._id) {
+      const modal = await this.modalCtrl.create({
+        component: CalificarStoreComponent,
+        componentProps: {
+          Calif: { idStore: this.idStore }, // Pasa tu lista de ingredientes aquí
+        },
+      });
+      modal.present();
+      const { data, role } = await modal.onWillDismiss();
+      if (role != 'confirm') {
+        this.getStoreBy();
+      }
+    } else {
+      this.alertService.presentAlert('Debes iniciar sesión para calificar');
     }
   }
   async openModal() {

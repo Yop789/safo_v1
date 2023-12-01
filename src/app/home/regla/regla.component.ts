@@ -1,11 +1,7 @@
+import { Recipe } from './../../models/recipe';
+import { RecetaService } from './../../services/receta.service';
 import { TituloAppService } from 'src/app/services/titulo-app.service';
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-regla',
@@ -13,9 +9,35 @@ import {
   styleUrls: ['./regla.component.scss'],
 })
 export class ReglaComponent implements OnInit {
-  constructor(private tituloAppService: TituloAppService) {}
+  item: Recipe;
+  constructor(
+    private tituloAppService: TituloAppService,
+    private recetaService: RecetaService
+  ) {}
 
-  ngOnInit() {
-    this.tituloAppService.titulo = 'Reglas';
+  ionViewDidEnter() {
+    this.tituloAppService.titulo = 'Receta Aleatoria';
+    this.getResetRandome();
+  }
+
+  ngOnInit() {}
+  getResetRandome() {
+    this.recetaService.getResetRandom().subscribe((res: any) => {
+      this.item = res.recipe;
+    });
+  }
+  estrella(data: any) {
+    if (data.length > 0) {
+      let sumaCalificaciones = data.reduce(
+        (acumulador, objeto) => acumulador + objeto.qualification,
+        0
+      );
+      return sumaCalificaciones / data.length;
+    } else {
+      return 0;
+    }
+  }
+  onClick() {
+    this.getResetRandome();
   }
 }

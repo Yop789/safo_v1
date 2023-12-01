@@ -31,6 +31,7 @@ import { InstruccionesComponent } from './instrucciones/instrucciones.component'
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { EditRecetasComponent } from './edit-recetas/edit-recetas.component';
 import { CalificacioComentarComponent } from './calificacio-comentar/calificacio-comentar.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -66,6 +67,7 @@ import { CalificacioComentarComponent } from './calificacio-comentar/calificacio
     AgregarRecetaComponent,
     PublicacionesComponent,
     EditRecetasComponent,
+    EditUserComponent,
     CalificacioComentarComponent,
   ],
   providers: [TituloAppService],

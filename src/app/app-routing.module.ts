@@ -23,6 +23,7 @@ import { ViewStoreComponent } from './client/view-store/view-store.component';
 import { PrincipalComponent } from './client/principal/principal.component';
 import { AgregarPublicidadComponent } from './client/agregar-publicidad/agregar-publicidad.component';
 import { PublicidadComponent } from './client/publicidad/publicidad.component';
+import { EditUserComponent } from './home/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,7 @@ const routes: Routes = [
       { path: 'edit-receta/:id', component: EditRecetasComponent },
       { path: 'acerca', component: AcercaNosotrosComponent },
       { path: 'view/:id', component: DetallesComponent },
+      { path: 'edit-user/:id', component: EditUserComponent },
       {
         path: 'admin',
         component: AdminPage,

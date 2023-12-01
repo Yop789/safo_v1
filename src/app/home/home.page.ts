@@ -4,6 +4,7 @@ import { TituloAppService } from './../services/titulo-app.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { NavController } from '@ionic/angular';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  public avatar = '';
-  public name = '';
+  public user: User;
   constructor(
     private location: Location,
     private tituloAppService: TituloAppService,
@@ -22,9 +22,7 @@ export class HomePage implements OnInit {
   ) {}
   ngOnInit(): void {
     this.menuService.user$.subscribe((menus) => {
-      const user = this.tokenService.decodeToken();
-      this.avatar = user.avatar || '';
-      this.name = user.name || '';
+      this.user = this.tokenService.decodeToken();
     });
   }
   goBack() {
@@ -37,8 +35,6 @@ export class HomePage implements OnInit {
     return url === '/home/inicio';
   }
   optenerImgUser() {
-    const user = this.tokenService.decodeToken();
-    this.avatar = '' + user.avatar;
-    this.name = '' + user.name;
+    this.user = this.tokenService.decodeToken();
   }
 }

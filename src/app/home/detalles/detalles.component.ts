@@ -1,3 +1,5 @@
+import { AlertService } from './../../services/alert/alert.service';
+import { TokenService } from './../../services/token/token.service';
 import { ModalController, NavController } from '@ionic/angular';
 import { TituloAppService } from './../../services/titulo-app.service';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +22,9 @@ export class DetallesComponent implements OnInit {
     private route: ActivatedRoute,
     private tituloAppService: TituloAppService,
     private navCtrl: NavController,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private tokenService: TokenService,
+    private alertService: AlertService
   ) {}
   ionViewDidEnter() {
     this.getRecet();
@@ -49,20 +53,27 @@ export class DetallesComponent implements OnInit {
     this.tituloAppService.back();
   }
   async openModalInstrucciones() {
-    const modal = await this.modalCtrl.create({
-      component: CalificacioComentarComponent,
-      componentProps: {
-        Calif: { idReceta: this.id }, // Pasa tu lista de ingredientes aquí
-      },
-    });
-    modal.present();
+    const user = this.tokenService.decodeToken();
+    if (user._id) {
+      const modal = await this.modalCtrl.create({
+        component: CalificacioComentarComponent,
+        componentProps: {
+          Calif: { idReceta: this.id }, // Pasa tu lista de ingredientes aquí
+        },
+      });
+      modal.present();
 
-    const { data, role } = await modal.onWillDismiss();
+      const { data, role } = await modal.onWillDismiss();
 
-    if (role === 'confirm') {
-      this.getRecet();
+      if (role === 'confirm') {
+        this.getRecet();
+      } else {
+        this.getRecet();
+      }
     } else {
-      this.getRecet();
+      this.alertService.presentAlert(
+        'Debes iniciar sesión para poder calificar una receta'
+      );
     }
   }
 

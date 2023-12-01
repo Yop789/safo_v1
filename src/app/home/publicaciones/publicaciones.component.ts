@@ -98,4 +98,15 @@ export class PublicacionesComponent implements OnInit {
   view() {
     this.router.navigate([`/home/view/${this.id}`]);
   }
+  estrella(data: any) {
+    if (data.length > 0) {
+      let sumaCalificaciones = data.reduce(
+        (acumulador, objeto) => acumulador + objeto.qualification,
+        0
+      );
+      return sumaCalificaciones / data.length;
+    } else {
+      return 0;
+    }
+  }
 }

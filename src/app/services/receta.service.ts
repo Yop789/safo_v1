@@ -11,6 +11,7 @@ import { Qualification } from '../models/qualification';
 export class RecetaService {
   usersApi = `${environment.apiSafo}reset`;
   comenRecipeApi = `${environment.apiSafo}resetqual`;
+  resetRandom = `${environment.apiSafo}resetRandom`;
 
   constructor(private http: HttpClient) {}
 
@@ -59,5 +60,8 @@ export class RecetaService {
       headers,
       body: data,
     });
+  }
+  getResetRandom(): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.resetRandom}`);
   }
 }

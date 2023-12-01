@@ -1,10 +1,13 @@
 <ion-menu mode="ios" side="end" contentId="main-content">
-  <ion-header [hidden]="avatar === ''">
+  <ion-header
+    [hidden]="user.avatar === ''"
+    [routerLink]="'edit-user/'+user._id"
+  >
     <ion-toolbar>
       <ion-avatar>
-        <img [src]="avatar" />
+        <img [src]="user.avatar" />
       </ion-avatar>
-      <ion-title>{{name}}</ion-title>
+      <ion-title>{{user.name}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
