@@ -1,8 +1,7 @@
 <ion-content>
-  <form [formGroup]="formReceta">
-    <ion-card>
+  <form [formGroup]="form">
+    <ion-card *ngIf="user">
       <div class="mt-3 ms-3 me-3">
-        <ion-label>Agrega una imagen a tu receta</ion-label>
         <input
           type="file"
           accept="image/*"
@@ -16,11 +15,13 @@
           class="mt-3 mb-3 align-content-center justify-content-center d-flex"
           (click)="openFileInput()"
         >
-          <img
-            class="border-2"
-            [src]="imageUrl || 'assets/img/SALF.png'"
-            height="185px"
-          />
+          <ion-avatar style="width: 200px; height: 200px">
+            <img
+              class="border-2"
+              [src]="imageUrl || 'assets/img/SALF.png'"
+              height="185px"
+            />
+          </ion-avatar>
         </div>
       </div>
     </ion-card>
@@ -34,6 +35,25 @@
           <ion-input
             formControlName="name"
             placeholder="Ej. Nombre de la receta"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-input
+            [readonly]="true"
+            type="email"
+            formControlName="email"
+            placeholder="Ej. nombre@gm.com"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-input
+            type="number"
+            formControlName="telefono"
+            placeholder="Ej. 4535242323"
           ></ion-input>
         </ion-item>
       </div>
@@ -51,7 +71,7 @@
           <button
             (click)="summit()"
             class="btn idBColor me-md-2 mb-4"
-            [disabled]="formReceta.valid === false"
+            [disabled]="form.valid === false"
           >
             Actualizar
           </button>

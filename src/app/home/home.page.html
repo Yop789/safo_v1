@@ -1,9 +1,6 @@
 <ion-menu mode="ios" side="end" contentId="main-content">
-  <ion-header
-    [hidden]="user.avatar === ''"
-    [routerLink]="'edit-user/'+user._id"
-  >
-    <ion-toolbar>
+  <ion-header [hidden]="user.rol?.name == ''">
+    <ion-toolbar [routerLink]="'edit-user/'+user._id">
       <ion-avatar>
         <img [src]="user.avatar" />
       </ion-avatar>

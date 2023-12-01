@@ -1,3 +1,4 @@
+import { TituloAppService } from 'src/app/services/titulo-app.service';
 import { UsuarioService } from './../../services/usuario.service';
 import { MenuService } from './../../services/menu/menu.service';
 import { Router } from '@angular/router';
@@ -13,7 +14,8 @@ export class MenuComponent implements OnInit {
   constructor(
     private router: Router,
     private menuService: MenuService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private tituloAppService: TituloAppService
   ) {
     this.menu = this.menuService.getMenus();
   }
@@ -25,10 +27,12 @@ export class MenuComponent implements OnInit {
   }
 
   pagina(s: string) {
-    if (s != 'salir') {
+    if (s != 'salir' && s != '') {
       this.router.navigateByUrl(`home/${s}`);
-    } else {
+    } else if (s != '') {
       this.logaut();
+    } else {
+      this.router.navigateByUrl(`home`);
     }
   }
   logaut() {

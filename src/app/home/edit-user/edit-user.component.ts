@@ -1,3 +1,4 @@
+import { UserApiService } from './../../services/api/user.api.service';
 import { AlertService } from './../../services/alert/alert.service';
 import { TokenService } from './../../services/token/token.service';
 import { RecetaService } from './../../services/receta.service';
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-user.component.scss'],
 })
 export class EditUserComponent implements OnInit {
-  formReceta: FormGroup;
+  form: FormGroup;
   imageUrl: string = '';
 
   file: any = null;
@@ -23,41 +24,54 @@ export class EditUserComponent implements OnInit {
   constructor(
     private tituloAppService: TituloAppService,
     private fb: FormBuilder,
-    private recetaService: RecetaService,
+    private userApiService: UserApiService,
 
     private tokenService: TokenService,
     private alertService: AlertService,
     private router: Router
   ) {
-    this.formReceta = this.fb.group({
+    this.form = this.fb.group({
       name: ['', [Validators.required]],
+      email: [
+        { valu: '', disabled: true },
+        [Validators.required, Validators.email],
+      ],
+      telefono: ['', [Validators.required, this.validarTelefono]],
     });
     this.user = this.tokenService.decodeToken();
-    this.tituloAppService.titulo = 'User';
+    this.imageUrl = this.user.avatar;
   }
 
   ngOnInit() {}
+  ionViewDidEnter() {
+    this.tituloAppService.titulo = 'User';
+    this.form.patchValue(this.user);
+  }
 
   summit() {
-    if (this.formReceta.valid) {
+    if (this.form.valid) {
       const formData = new FormData();
-
-      formData.append('name', this.formReceta.value.name);
-
+      formData.append('name', this.form.value.name);
+      formData.append('telefono', this.form.value.telefono);
       if (this.file) {
-        formData.append('img', this.file);
+        formData.append('avatar', this.file);
       }
-      this.recetaService.createRecipe(formData).subscribe((result: any) => {
-        this.alertService.presentAlert(result.message);
-        this.router.navigateByUrl(`home/publicaciones`);
-      });
+      this.userApiService
+        .updateUser(this.user._id, formData)
+        .subscribe((result: any) => {
+          this.form.patchValue(result.user);
+          this.imageUrl = result.user.avatar;
+          this.alertService.presentAlert(result.message);
+          this.userApiService
+            .Token(this.user.idUserFire)
+            .subscribe((result: any) =>
+              localStorage.setItem('token', result.token)
+            );
+        });
     }
   }
   cancelar() {
-    // Lógica para cancelar
-    this.formReceta.reset();
-
-    this.imageUrl = null;
+    this.router.navigateByUrl(`home`);
   }
 
   onFileSelected(event: any) {
@@ -107,5 +121,17 @@ export class EditUserComponent implements OnInit {
     // if (role === 'confirm') {
     //   this.step = data;
     // }
+  }
+  validarTelefono(control) {
+    const telefono = control.value;
+
+    // Expresión regular para validar que haya exactamente 10 dígitos numéricos
+    const patron = /^\d{10}$/;
+
+    if (telefono && !patron.test(telefono)) {
+      return { telefonoInvalido: true };
+    }
+
+    return null;
   }
 }

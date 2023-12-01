@@ -12,7 +12,7 @@ import { User } from '../models/user';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  public user: User;
+  public user: any;
   constructor(
     private location: Location,
     private tituloAppService: TituloAppService,
@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
     private tokenService: TokenService,
     private menuService: MenuService
   ) {}
+
   ngOnInit(): void {
     this.menuService.user$.subscribe((menus) => {
       this.user = this.tokenService.decodeToken();

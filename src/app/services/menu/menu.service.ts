@@ -12,7 +12,13 @@ export class MenuService {
     ''
   );
   public user$: Observable<string> = this.userSubject.asObservable();
-
+  public inicio: Menu[] = [
+    {
+      name: 'inicio',
+      url: '',
+      icon: 'home-outline',
+    },
+  ];
   public inisiarSesion: Menu[] = [
     {
       name: 'iniciosesio',
@@ -96,13 +102,13 @@ export class MenuService {
   public getMenus(): any {
     const rol = this.tokenService.decodeToken().rol.name;
     if (rol === '') {
-      return [...this.inisiarSesion, ...this.defaul];
+      return [...this.inisiarSesion, ...this.inicio, ...this.defaul];
     } else if (rol === 'Client') {
-      return [...this.client, ...this.defaul, ...this.logaut];
+      return [...this.inicio, ...this.client, ...this.defaul, ...this.logaut];
     } else if (rol === 'Admin') {
-      return [...this.admin, ...this.defaul, ...this.logaut];
+      return [...this.inicio, ...this.admin, ...this.defaul, ...this.logaut];
     } else if (rol === 'foraneo') {
-      return [...this.foraneo, ...this.defaul, ...this.logaut];
+      return [...this.inicio, ...this.foraneo, ...this.defaul, ...this.logaut];
     }
   }
 }
