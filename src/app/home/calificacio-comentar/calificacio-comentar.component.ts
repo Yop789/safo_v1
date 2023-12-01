@@ -41,6 +41,7 @@ export class CalificacioComentarComponent implements OnInit {
   user: User;
   data: DataC[] = [];
   idComent: string;
+  idUserReset: string;
   constructor(
     private modalCtrl: ModalController,
     private fb: FormBuilder,
@@ -83,6 +84,7 @@ export class CalificacioComentarComponent implements OnInit {
     this.recetaService
       .getQualification(this.list.idReceta)
       .subscribe((res: any) => {
+        this.idUserReset = res._id;
         this.data = res.qualification;
       });
   }

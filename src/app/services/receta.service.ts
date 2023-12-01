@@ -12,6 +12,7 @@ export class RecetaService {
   usersApi = `${environment.apiSafo}reset`;
   comenRecipeApi = `${environment.apiSafo}resetqual`;
   resetRandom = `${environment.apiSafo}resetRandom`;
+  resetPag = `${environment.apiSafo}resetsP`;
 
   constructor(private http: HttpClient) {}
 
@@ -63,5 +64,8 @@ export class RecetaService {
   }
   getResetRandom(): Observable<Recipe> {
     return this.http.get<Recipe>(`${this.resetRandom}`);
+  }
+  getRecetaPorPagincion(page: number, pageSize: number) {
+    return this.http.get<Recipe[]>(`${this.resetPag}/${page}/${pageSize}`);
   }
 }

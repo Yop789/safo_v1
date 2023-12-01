@@ -33,6 +33,11 @@ export class MenuService {
   ];
   public defaul: Menu[] = [
     {
+      name: 'tiendas',
+      url: 'tiendas',
+      icon: 'storefront-outline',
+    },
+    {
       name: 'Ruleta',
       url: 'ruleta',
       icon: 'shuffle-outline',
@@ -57,11 +62,11 @@ export class MenuService {
   ];
 
   public client: Menu[] = [
-    {
-      name: 'client',
-      url: 'client',
-      icon: 'megaphone-outline',
-    },
+    // {
+    //   name: 'client',
+    //   url: 'client',
+    //   icon: 'megaphone-outline',
+    // },
     {
       name: 'Administración de Tiendas',
       url: 'client/tienda',

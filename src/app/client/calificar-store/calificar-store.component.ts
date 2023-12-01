@@ -38,6 +38,7 @@ export class CalificarStoreComponent implements OnInit {
   edit: boolean = false;
   starRating = 0;
   user: User;
+  idUserStore: string;
   data: DataC[] = [];
   idComent: string;
   constructor(
@@ -53,8 +54,8 @@ export class CalificarStoreComponent implements OnInit {
     });
     this.list = this.navParams.get('Calif');
 
-    this.getCalif();
     this.getUser();
+    this.getCalif();
   }
 
   ngOnInit() {}
@@ -82,6 +83,8 @@ export class CalificarStoreComponent implements OnInit {
     this.storeService
       .getQualification(this.list.idStore)
       .subscribe((res: any) => {
+        this.idUserStore = res.idUser;
+
         this.data = res.qualification;
       });
   }

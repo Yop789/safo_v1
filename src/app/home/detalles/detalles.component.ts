@@ -1,3 +1,5 @@
+import { AdvertisementService } from './../../services/advertisement.service';
+import { Publicidad } from './../../models/publicidad';
 import { AlertService } from './../../services/alert/alert.service';
 import { TokenService } from './../../services/token/token.service';
 import { ModalController, NavController } from '@ionic/angular';
@@ -17,6 +19,7 @@ export class DetallesComponent implements OnInit {
   starRating = 0;
   data: Recipe;
   id: string;
+  public: Publicidad;
   constructor(
     private recetaService: RecetaService,
     private route: ActivatedRoute,
@@ -24,9 +27,11 @@ export class DetallesComponent implements OnInit {
     private navCtrl: NavController,
     private modalCtrl: ModalController,
     private tokenService: TokenService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private advertisementService: AdvertisementService
   ) {}
   ionViewDidEnter() {
+    this.getRandomPubli();
     this.getRecet();
     this.tituloAppService.titulo = 'Detalles de la Receta';
   }
@@ -83,5 +88,10 @@ export class DetallesComponent implements OnInit {
       0
     );
     this.starRating = sumaCalificaciones / this.data.qualification.length;
+  }
+  getRandomPubli() {
+    this.advertisementService.getRandom().subscribe((data) => {
+      this.public = data.recipe;
+    });
   }
 }

@@ -24,6 +24,7 @@ import { PrincipalComponent } from './client/principal/principal.component';
 import { AgregarPublicidadComponent } from './client/agregar-publicidad/agregar-publicidad.component';
 import { PublicidadComponent } from './client/publicidad/publicidad.component';
 import { EditUserComponent } from './home/edit-user/edit-user.component';
+import { TiendasComponent } from './home/tiendas/tiendas.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,8 @@ const routes: Routes = [
       { path: 'acerca', component: AcercaNosotrosComponent },
       { path: 'view/:id', component: DetallesComponent },
       { path: 'edit-user/:id', component: EditUserComponent },
+      { path: 'tiendas', component: TiendasComponent },
+      { path: 'view-tienda/:id', component: ViewStoreComponent },
       {
         path: 'admin',
         component: AdminPage,

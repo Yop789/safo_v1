@@ -44,7 +44,7 @@
         <div *ngFor="let item of data">
           <ion-icon
             (click)="open(item._id)"
-            *ngIf="item.idUser?._id !== user?._id"
+            *ngIf="item.idUser?._id === user?._id"
             name="ellipsis-vertical-outline"
           ></ion-icon>
           <ion-item>

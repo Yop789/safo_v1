@@ -1,4 +1,13 @@
 <ion-content>
+  <ion-card *ngIf="public" [routerLink]="'/home/view-tienda/' + public.idStore">
+    <ion-item class="m-2">
+      <div style="border-radius: 5px">
+        <ion-img style="height: 50px" [src]="public.image"></ion-img>
+      </div>
+
+      <ion-label>{{ public.name }}</ion-label>
+    </ion-item>
+  </ion-card>
   <ion-card *ngIf="data">
     <ion-card-header>
       <ion-card-title style="text-align: center">{{

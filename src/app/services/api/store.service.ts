@@ -14,6 +14,7 @@ import { Store } from './../../models/store';
 export class StoreService {
   private url1 = `${environment.apiSafo}store`;
   private url2 = `${environment.apiSafo}storeUser/`;
+  private urlPag = `${environment.apiSafo}storep`;
   private storqual = `${environment.apiSafo}storequal`;
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
@@ -65,5 +66,8 @@ export class StoreService {
       headers,
       body: data,
     });
+  }
+  getStorePorPagincion(page: number, pageSize: number) {
+    return this.http.get<Store[]>(`${this.urlPag}/${page}/${pageSize}`);
   }
 }

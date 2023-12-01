@@ -11,6 +11,7 @@ import { TokenService } from './token/token.service';
 export class AdvertisementService {
   publiApi = `${environment.apiSafo}advertisement`;
   publiUserApo = `${environment.apiSafo}advertisementIUser/`;
+  getRandomPublic = `${environment.apiSafo}advertRandom`;
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
@@ -28,6 +29,12 @@ export class AdvertisementService {
   deletePublicidad(id: string): Observable<any> {
     let header = new HttpHeaders().set('Type-content', 'aplication/json');
     return this.http.delete<any>(this.publiApi + '/' + id, {
+      headers: header,
+    });
+  }
+  getRandom() {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get<any>(this.getRandomPublic, {
       headers: header,
     });
   }
