@@ -5,6 +5,7 @@
         <ion-label>Agrega una imagen a tu receta</ion-label>
         <input
           type="file"
+          accept="image/*"
           id="fileInput"
           (change)="onFileSelected($event)"
           style="display: none"

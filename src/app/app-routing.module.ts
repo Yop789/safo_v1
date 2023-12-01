@@ -21,6 +21,8 @@ import { EditRecetasComponent } from './home/edit-recetas/edit-recetas.component
 import { EditTiendaComponent } from './client/edit-tienda/edit-tienda.component';
 import { ViewStoreComponent } from './client/view-store/view-store.component';
 import { PrincipalComponent } from './client/principal/principal.component';
+import { AgregarPublicidadComponent } from './client/agregar-publicidad/agregar-publicidad.component';
+import { PublicidadComponent } from './client/publicidad/publicidad.component';
 
 const routes: Routes = [
   {
@@ -74,6 +76,8 @@ const routes: Routes = [
           { path: 'register-tienda', component: RegisterStoreComponent },
           { path: 'edit-tienda/:id', component: EditTiendaComponent },
           { path: 'view-tienda/:id', component: ViewStoreComponent },
+          { path: 'agregar-publicidad', component: AgregarPublicidadComponent },
+          { path: 'publicidad', component: PublicidadComponent },
         ],
       },
     ],

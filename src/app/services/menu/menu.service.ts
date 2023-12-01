@@ -61,6 +61,11 @@ export class MenuService {
       url: 'client/tienda',
       icon: 'storefront-outline',
     },
+    {
+      name: 'Publicidad',
+      url: 'client/publicidad',
+      icon: 'cart-outline',
+    },
   ];
   public admin: Menu[] = [
     {

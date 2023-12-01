@@ -21,10 +21,11 @@ export class DetallesComponent implements OnInit {
     private tituloAppService: TituloAppService,
     private navCtrl: NavController,
     private modalCtrl: ModalController
-  ) {
+  ) {}
+  ionViewDidEnter() {
     this.getRecet();
+    this.tituloAppService.titulo = 'Detalles de la Receta';
   }
-
   ngOnInit() {}
   getRecet() {
     this.id = this.route.snapshot.params['id'];

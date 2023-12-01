@@ -51,15 +51,13 @@ export class StoreComponent implements OnInit {
     private storeService: StoreService,
     private typeStoreService: TypeStoreService,
     private alertService: AlertService
-  ) {
-    this.tituloAppService.titulo = 'Administración de Tiendas';
-
-    this.type = this.typeStoreService.getTypes();
-  }
-
-  ngOnInit() {
+  ) {}
+  ionViewDidEnter() {
     this.getData();
+    this.type = this.typeStoreService.getTypes();
+    this.tituloAppService.titulo = 'Administración de Tiendas';
   }
+  ngOnInit() {}
   getData() {
     this.storeService.getStoreByIdUser().subscribe((stores: any) => {
       this.items = stores;
@@ -78,7 +76,6 @@ export class StoreComponent implements OnInit {
   }
   action(ev) {
     this.isActionSheetOpen = false;
-    console.log(ev.detail.data.action);
     switch (ev.detail.data.action) {
       case 'edit':
         this.router.navigate(['/home/client/edit-tienda', this.idStore]);
@@ -108,5 +105,16 @@ export class StoreComponent implements OnInit {
       this.getData();
     });
     this.idStore = '';
+  }
+  estrella(data: any) {
+    if (data.length > 0) {
+      let sumaCalificaciones = data.reduce(
+        (acumulador, objeto) => acumulador + objeto.qualification,
+        0
+      );
+      return sumaCalificaciones / data.length;
+    } else {
+      return 0;
+    }
   }
 }

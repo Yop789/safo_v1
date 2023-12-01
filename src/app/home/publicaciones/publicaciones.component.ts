@@ -48,10 +48,9 @@ export class PublicacionesComponent implements OnInit {
     private tituloAppService: TituloAppService,
     private router: Router,
     private alertService: AlertService
-  ) {
-    this.tituloAppService.titulo = 'Publicaciones de recetas';
-  }
+  ) {}
   ionViewDidEnter() {
+    this.tituloAppService.titulo = 'Publicaciones de recetas';
     this.get(); // Llama a una función que carga los datos
   }
   ngOnInit() {}

@@ -28,10 +28,13 @@ export class MapComponent implements OnInit {
   confirm() {
     return this.modalCtrl.dismiss({ lat: this.lat, lng: this.lng }, 'confirm');
   }
+  ionViewDidEnter() {
+    this.buildMap();
+  }
 
-  ngOnInit() {
+  ngOnInit() {}
+  buildMap() {
     if (!this.lat) {
-      console.log('No se ha seleccionado una ubicación');
       const map = this.mapboxService.initializeMap();
       const marker = new mapboxgl.Marker({
         color: '#314ccd',
@@ -44,7 +47,6 @@ export class MapComponent implements OnInit {
 
         this.lng = event.lngLat.lng;
         this.lat = event.lngLat.lat;
-        console.log(this.lng, this.lat);
       });
     } else {
       console.log('Ubicación seleccionada', this.lat, this.lng);

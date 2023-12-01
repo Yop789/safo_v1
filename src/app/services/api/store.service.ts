@@ -1,3 +1,4 @@
+import { Qualification } from './../../models/qualification';
 import { User } from './../../models/user';
 import { TokenService } from './../token/token.service';
 import { Injectable } from '@angular/core';
@@ -13,6 +14,7 @@ import { Store } from './../../models/store';
 export class StoreService {
   private url1 = `${environment.apiSafo}store`;
   private url2 = `${environment.apiSafo}storeUser/`;
+  private storqual = `${environment.apiSafo}storequal`;
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   createStore(store: any): Observable<Store> {
@@ -37,6 +39,31 @@ export class StoreService {
     let header = new HttpHeaders().set('Type-content', 'aplication/json');
     return this.http.put<Store>(this.url1 + '/' + id, store, {
       headers: header,
+    });
+  }
+  createQualification(
+    id: string,
+    qualification: Qualification
+  ): Observable<any> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.post(`${this.storqual}/${id}`, qualification, {
+      headers: header,
+    });
+  }
+  getQualification(id: string): Observable<Qualification[]> {
+    return this.http.get<Qualification[]>(`${this.storqual}/${id}`);
+  }
+
+  deleteQualification(id: string, idQual: string): Observable<any> {
+    const data = {
+      _id: idQual,
+    };
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.http.delete(`${this.storqual}/${id}`, {
+      headers,
+      body: data,
     });
   }
 }

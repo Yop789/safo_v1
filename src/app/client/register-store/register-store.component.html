@@ -8,6 +8,7 @@
           <ion-label>Agrega una imagen a tu tienda</ion-label>
           <input
             type="file"
+            accept="image/*"
             id="fileInput"
             (change)="onFileSelected($event)"
             style="display: none"
@@ -86,11 +87,12 @@
           <button
             style="background-color: white; color: black"
             class="btn me-md-2 mb-3"
+            (click)="cancelar()"
           >
             Cancelar
           </button>
           <button
-            class="btn idBColor"
+            class="btn idBColor btn me-md-2 mb-3"
             (click)="onSubmit()"
             [disabled]="form.valid === false || file === null || lat === 0"
           >

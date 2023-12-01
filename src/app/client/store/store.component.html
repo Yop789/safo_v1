@@ -12,7 +12,13 @@
           <ion-card-title>{{ item.name }}</ion-card-title>
           <ion-card-subtitle class="align-content-center d-flex">
             {{ item.category }}
-            <mat-icon [fontIcon]="getIconName(item.category)"></mat-icon>
+            <mat-icon [fontIcon]="getIconName(item.category)"></mat-icon
+            ><ngb-rating
+              [max]="5"
+              [rate]="estrella(item.qualification)"
+              style="font-size: 35px"
+              [readonly]="true"
+            ></ngb-rating>
           </ion-card-subtitle>
         </ion-card-header>
       </ion-card>

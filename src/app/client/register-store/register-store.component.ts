@@ -103,4 +103,7 @@ export class RegisterStoreComponent implements OnInit {
       this.lng = data.lng;
     }
   }
+  cancelar() {
+    this.router.navigate(['/home/client/tienda']);
+  }
 }

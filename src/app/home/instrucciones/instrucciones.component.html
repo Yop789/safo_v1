@@ -33,28 +33,28 @@
 
     <div class="mt-3 ms-3 me-3">
       <button
-        class="btn me-1"
+        class="btn me-1 idBColor"
         [disabled]="form.valid === false || edit"
         (click)="agregarIngrediente()"
       >
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </button>
       <button
-        class="btn me-1"
+        class="btn me-1 idBColor"
         [disabled]="form.valid === false || edit"
         (click)="limpiar()"
       >
         <ion-icon slot="close-only" name="close"></ion-icon>
       </button>
       <button
-        class="btn me-1"
+        class="btn me-1 idBColor"
         [disabled]="!edit"
         (click)="actualizarIngrediente()"
       >
         <ion-icon name="checkmark-outline"></ion-icon>
       </button>
       <button
-        class="btn me-1"
+        class="btn me-1 idBColor"
         [disabled]="!edit"
         (click)="eliminarIngrediente()"
       >

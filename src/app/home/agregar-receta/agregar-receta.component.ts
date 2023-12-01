@@ -44,11 +44,10 @@ export class AgregarRecetaComponent implements OnInit {
       category: ['', [Validators.required]], // Puedes asignar un valor por defecto
     });
     this.user = this.tokenService.decodeToken();
-  }
-
-  ngOnInit() {
     this.tituloAppService.titulo = 'Agregar Receta';
   }
+
+  ngOnInit() {}
 
   summit() {
     if (this.formReceta.valid) {
