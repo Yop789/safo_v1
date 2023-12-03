@@ -17,6 +17,8 @@ export class StoreService {
   private urlPag = `${environment.apiSafo}storep`;
   private storqual = `${environment.apiSafo}storequal`;
   private storeLike = `${environment.apiSafo}storeLikes`;
+  private storePagFilter = `${environment.apiSafo}storeSeach`;
+  private storeFavorite = `${environment.apiSafo}storeLiqueUser/idUser=`;
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   createStore(store: any): Observable<Store> {
@@ -77,5 +79,19 @@ export class StoreService {
       `${this.storeLike}/idStore=${idStore}/idUser=${idUser}`,
       { headers: header }
     );
+  }
+  getFilterPageStore(page: number, search: any) {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get<any[]>(
+      `${this.storePagFilter}/page=${page}/pageSize=2/searchTerm=${search}`,
+      { headers: header }
+    );
+  }
+  getStoreFavoritByUser() {
+    const user: User = this.tokenService.decodeToken();
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get<any[]>(`${this.storeFavorite}${user._id}`, {
+      headers: header,
+    });
   }
 }

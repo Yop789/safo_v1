@@ -1,3 +1,6 @@
+import { TokenService } from './token/token.service';
+import { User } from './../models/user';
+import { HeaderComponent } from './../home/header/header.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
@@ -14,8 +17,10 @@ export class RecetaService {
   resetRandom = `${environment.apiSafo}resetRandom`;
   resetPag = `${environment.apiSafo}resetsP`;
   resetLike = `${environment.apiSafo}resetLikes`;
+  resetPagFilter = `${environment.apiSafo}resetSeach`;
+  resetFavorite = `${environment.apiSafo}resetLiqueUser/idUser=`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   createRecipe(recipe: any): Observable<Recipe> {
     let header = new HttpHeaders().set('Type-content', 'aplication/json');
@@ -75,5 +80,19 @@ export class RecetaService {
       `${this.resetLike}/idReset=${idStore}/idUser=${idUser}`,
       { headers: header }
     );
+  }
+  getFilterPageReset(page: number, search: any) {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get<Recipe[]>(
+      `${this.resetPagFilter}/page=${page}/pageSize=2/searchTerm=${search}`,
+      { headers: header }
+    );
+  }
+  getResetFavoritByUser() {
+    const user: User = this.tokenService.decodeToken();
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get<any[]>(`${this.resetFavorite}${user._id}`, {
+      headers: header,
+    });
   }
 }

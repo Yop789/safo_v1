@@ -1,6 +1,7 @@
 import { TituloAppService } from 'src/app/services/titulo-app.service';
 import { StoreService } from './../../services/api/store.service';
 import { Component, OnInit } from '@angular/core';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-tiendas',
@@ -11,7 +12,9 @@ export class TiendasComponent implements OnInit {
   items: any[] = [];
   paginaActual = 1;
   cantidadPorPagina = 2;
-  cantidadDePagina = 0;
+  cantidadDePaginas = 0;
+  imageLoaded: boolean[] = [];
+  searchTerm: string = '';
 
   constructor(
     private storeService: StoreService,
@@ -19,20 +22,18 @@ export class TiendasComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.predeterminarVariables();
     this.tituloAppService.titulo = 'Tiendas';
     this.getDtaStore();
   }
 
-  estrella(data: any) {
-    if (data.length > 0) {
-      let sumaCalificaciones = data.reduce(
-        (acumulador, objeto) => acumulador + objeto.qualification,
-        0
-      );
-      return sumaCalificaciones / data.length;
-    } else {
-      return 0;
-    }
+  calificacionPromedio(data: any) {
+    return data.length > 0
+      ? data.reduce(
+          (acumulador, objeto) => acumulador + objeto.qualification,
+          0
+        ) / data.length
+      : 0;
   }
 
   getDtaStore() {
@@ -40,7 +41,9 @@ export class TiendasComponent implements OnInit {
       .getStorePorPagincion(this.paginaActual, this.cantidadPorPagina)
       .subscribe(
         (data: any) => {
-          this.cantidadDePagina = data.totalPages;
+          this.cantidadDePaginas = data.totalPages;
+          console.log(data.totalPages);
+
           this.items = this.items.concat(data.data);
         },
         (error) => {
@@ -51,6 +54,56 @@ export class TiendasComponent implements OnInit {
 
   cargarMasDatos() {
     this.paginaActual++;
-    this.getDtaStore();
+    this.searchTerm === ''
+      ? this.getDtaStore()
+      : this.getPagFilterStoreScroll();
+  }
+
+  onIonInfinite(ev: any) {
+    this.cargarMasDatos();
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
+  }
+
+  onImageLoad(index: number): void {
+    this.imageLoaded[index] = true;
+  }
+
+  onSearch(event: any) {
+    this.searchTerm = event.target.value;
+
+    if (this.searchTerm.length > 1) {
+      this.predeterminarVariables();
+      this.getPagFilterStore();
+    } else {
+      this.predeterminarVariables();
+      this.searchTerm = '';
+      this.getDtaStore();
+    }
+  }
+
+  predeterminarVariables() {
+    this.paginaActual = 1;
+    this.cantidadPorPagina = 2;
+    this.cantidadDePaginas = 0;
+    this.items = [];
+  }
+
+  getPagFilterStore() {
+    this.storeService
+      .getFilterPageStore(this.paginaActual, this.searchTerm)
+      .subscribe((data: any) => {
+        this.cantidadDePaginas = data.totalPages;
+        this.items = data.data;
+      });
+  }
+  getPagFilterStoreScroll() {
+    this.storeService
+      .getFilterPageStore(this.paginaActual, this.searchTerm)
+      .subscribe((data: any) => {
+        this.cantidadDePaginas = data.totalPages;
+        this.items = [...this.items, ...data.data];
+      });
   }
 }

@@ -1,3 +1,4 @@
+import { MisResetasFavoritasComponent } from './mis-resetas-favoritas/mis-resetas-favoritas.component';
 import { MenuComponent } from './menu/menu.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -33,6 +34,7 @@ import { EditRecetasComponent } from './edit-recetas/edit-recetas.component';
 import { CalificacioComentarComponent } from './calificacio-comentar/calificacio-comentar.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { TiendasComponent } from './tiendas/tiendas.component';
+import { MisTiendasFavoritasComponent } from './mis-tiendas-favoritas/mis-tiendas-favoritas.component';
 
 @NgModule({
   imports: [
@@ -71,6 +73,8 @@ import { TiendasComponent } from './tiendas/tiendas.component';
     EditUserComponent,
     CalificacioComentarComponent,
     TiendasComponent,
+    MisTiendasFavoritasComponent,
+    MisResetasFavoritasComponent,
   ],
   providers: [TituloAppService],
 })

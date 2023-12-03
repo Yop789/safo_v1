@@ -98,7 +98,7 @@ export class ViewStoreComponent implements OnInit {
         });
     } else {
       this.alertService.presentAlert(
-        'Debes iniciar sesión para poder calificar una receta'
+        'Debes iniciar sesión para poder agregar la tienda a favoritos'
       );
     }
   }

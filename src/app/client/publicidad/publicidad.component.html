@@ -21,6 +21,15 @@
       </ion-card>
     </ion-col>
   </ion-row>
+  <div
+    *ngIf="publicidad.length === 0"
+    class="align-content-center justify-content-center d-flex flex-column align-items-center"
+  >
+    <ion-icon
+      style="font-size: 200px; color: #e1e1e1"
+      name="file-tray-stacked-outline"
+    ></ion-icon>
+  </div>
 </ion-content>
 <ion-action-sheet
   [isOpen]="isActionSheetOpen"

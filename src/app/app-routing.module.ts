@@ -1,3 +1,4 @@
+import { MisResetasFavoritasComponent } from './home/mis-resetas-favoritas/mis-resetas-favoritas.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home/home.page';
@@ -25,6 +26,7 @@ import { AgregarPublicidadComponent } from './client/agregar-publicidad/agregar-
 import { PublicidadComponent } from './client/publicidad/publicidad.component';
 import { EditUserComponent } from './home/edit-user/edit-user.component';
 import { TiendasComponent } from './home/tiendas/tiendas.component';
+import { MisTiendasFavoritasComponent } from './home/mis-tiendas-favoritas/mis-tiendas-favoritas.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,8 @@ const routes: Routes = [
       { path: 'edit-user/:id', component: EditUserComponent },
       { path: 'tiendas', component: TiendasComponent },
       { path: 'view-tienda/:id', component: ViewStoreComponent },
+      { path: 'favorit-store', component: MisTiendasFavoritasComponent },
+      { path: 'favorit-receta', component: MisResetasFavoritasComponent },
       {
         path: 'admin',
         component: AdminPage,

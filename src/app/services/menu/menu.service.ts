@@ -96,6 +96,16 @@ export class MenuService {
       url: 'agregar-receta',
       icon: 'book-outline',
     },
+    {
+      name: 'Recetas Favoritas',
+      url: 'favorit-receta',
+      icon: 'attach-outline',
+    },
+    {
+      name: 'Tiendas Favoritas',
+      url: 'favorit-store',
+      icon: 'attach-outline',
+    },
   ];
 
   constructor(private tokenService: TokenService) {}

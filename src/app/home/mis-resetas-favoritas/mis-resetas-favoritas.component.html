@@ -1,12 +1,4 @@
 <ion-content>
-  <ion-searchbar
-    class="buscar"
-    show-clear-button="focus"
-    placeholder="Buscar recetas"
-    animated
-    (ionInput)="onSearch($event)"
-  ></ion-searchbar>
-
   <ion-row>
     <ion-col
       size-md="2"
@@ -41,12 +33,15 @@
         </ion-card-header>
       </ion-card>
     </ion-col>
-    <ion-infinite-scroll
-      *ngIf="items && cantidadDePaginas != paginaActual"
-      (ionInfinite)="onIonInfinite($event)"
-    >
-      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
   </ion-row>
-  <ion-label *ngIf="!items">No se encontraron datos</ion-label>
+  <div
+    *ngIf="items.length === 0"
+    class="align-content-center justify-content-center d-flex flex-column align-items-center"
+  >
+    <ion-icon
+      style="font-size: 200px; color: #e1e1e1"
+      name="file-tray-stacked-outline"
+    ></ion-icon>
+    <button class="btn" routerLink="/home">Ver Recetas</button>
+  </div>
 </ion-content>
