@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { AlertService } from './../../services/alert/alert.service';
 import { TokenService } from './../../services/token/token.service';
 import { TituloAppService } from './../../services/titulo-app.service';
@@ -20,7 +21,8 @@ export class ViewStoreComponent implements OnInit {
   data: any;
   lat: number;
   starRating = 0;
-
+  isFavorite = false;
+  user: User;
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
@@ -30,6 +32,7 @@ export class ViewStoreComponent implements OnInit {
     private alertService: AlertService
   ) {}
   ionViewDidEnter() {
+    this.user = this.tokenService.decodeToken();
     this.getStoreBy();
     this.tituloAppService.titulo = 'Detalles de la tienda';
   }
@@ -40,11 +43,19 @@ export class ViewStoreComponent implements OnInit {
       this.data = data;
       this.estrellas();
       this.imageUrl = data.image;
+      const likeIndex = data.like.findIndex((l) => l.idUser === this.user._id);
+
+      if (likeIndex !== -1) {
+        // El usuario actual ya ha dado like
+        this.isFavorite = true;
+      } else {
+        // El usuario actual no ha dado like
+        this.isFavorite = false;
+      }
     });
   }
   async openModalInstrucciones() {
-    const user = this.tokenService.decodeToken();
-    if (user._id) {
+    if (this.user._id) {
       const modal = await this.modalCtrl.create({
         component: CalificarStoreComponent,
         componentProps: {
@@ -76,5 +87,19 @@ export class ViewStoreComponent implements OnInit {
       0
     );
     this.starRating = sumaCalificaciones / this.data.qualification.length;
+  }
+  toggleFavorite() {
+    if (this.user._id) {
+      this.storeService
+        .likeStore(this.idStore, this.user._id)
+        .subscribe((res: any) => {
+          this.getStoreBy();
+          this.alertService.presentAlert(res.message);
+        });
+    } else {
+      this.alertService.presentAlert(
+        'Debes iniciar sesión para poder calificar una receta'
+      );
+    }
   }
 }

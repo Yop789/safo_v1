@@ -9,10 +9,17 @@
     </ion-item>
   </ion-card>
   <ion-card *ngIf="data">
+    <ion-icon
+      style="font-size: 40px"
+      name="attach-outline"
+      [style.color]="isFavorite ? '#5cb85c' : '#eeeeee'"
+      (click)="toggleFavorite()"
+    ></ion-icon>
     <ion-card-header>
       <ion-card-title style="text-align: center">{{
         data.name || "nombre de la receta"
       }}</ion-card-title>
+
       <ion-item>
         <ion-avatar slot="start">
           <ion-img [src]="data.idUser.avatar"></ion-img>

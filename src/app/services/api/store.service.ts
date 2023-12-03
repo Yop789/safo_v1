@@ -16,6 +16,7 @@ export class StoreService {
   private url2 = `${environment.apiSafo}storeUser/`;
   private urlPag = `${environment.apiSafo}storep`;
   private storqual = `${environment.apiSafo}storequal`;
+  private storeLike = `${environment.apiSafo}storeLikes`;
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   createStore(store: any): Observable<Store> {
@@ -69,5 +70,12 @@ export class StoreService {
   }
   getStorePorPagincion(page: number, pageSize: number) {
     return this.http.get<Store[]>(`${this.urlPag}/${page}/${pageSize}`);
+  }
+  likeStore(idStore: string, idUser: string): Observable<Store> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get<Store>(
+      `${this.storeLike}/idStore=${idStore}/idUser=${idUser}`,
+      { headers: header }
+    );
   }
 }

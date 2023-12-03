@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { AdvertisementService } from './../../services/advertisement.service';
 import { Publicidad } from './../../models/publicidad';
 import { AlertService } from './../../services/alert/alert.service';
@@ -20,6 +21,9 @@ export class DetallesComponent implements OnInit {
   data: Recipe;
   id: string;
   public: Publicidad;
+  isFavorite: boolean = false;
+  user: User;
+
   constructor(
     private recetaService: RecetaService,
     private route: ActivatedRoute,
@@ -34,15 +38,27 @@ export class DetallesComponent implements OnInit {
     this.getRandomPubli();
     this.getRecet();
     this.tituloAppService.titulo = 'Detalles de la Receta';
+    this.user = this.tokenService.decodeToken();
   }
   ngOnInit() {}
   getRecet() {
     this.id = this.route.snapshot.params['id'];
     if (this.id != null) {
       this.recetaService.getRecipeById(this.id).subscribe(
-        (resp: Recipe) => {
+        (resp: any) => {
           this.data = resp;
           this.estrellas();
+          const likeIndex = resp.like.findIndex(
+            (l) => l.idUser === this.user._id
+          );
+
+          if (likeIndex !== -1) {
+            // El usuario actual ya ha dado like
+            this.isFavorite = true;
+          } else {
+            // El usuario actual no ha dado like
+            this.isFavorite = false;
+          }
         },
         (error) => {
           this.goBack();
@@ -58,8 +74,7 @@ export class DetallesComponent implements OnInit {
     this.tituloAppService.back();
   }
   async openModalInstrucciones() {
-    const user = this.tokenService.decodeToken();
-    if (user._id) {
+    if (this.user._id) {
       const modal = await this.modalCtrl.create({
         component: CalificacioComentarComponent,
         componentProps: {
@@ -93,5 +108,19 @@ export class DetallesComponent implements OnInit {
     this.advertisementService.getRandom().subscribe((data) => {
       this.public = data.recipe;
     });
+  }
+  toggleFavorite() {
+    if (this.user._id) {
+      this.recetaService
+        .likeReset(this.id, this.user._id)
+        .subscribe((data: any) => {
+          this.getRecet();
+          this.alertService.presentAlert(data.message);
+        });
+    } else {
+      this.alertService.presentAlert(
+        'Debes iniciar sesión para poder calificar una receta'
+      );
+    }
   }
 }

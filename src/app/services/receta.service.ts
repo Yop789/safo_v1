@@ -13,6 +13,7 @@ export class RecetaService {
   comenRecipeApi = `${environment.apiSafo}resetqual`;
   resetRandom = `${environment.apiSafo}resetRandom`;
   resetPag = `${environment.apiSafo}resetsP`;
+  resetLike = `${environment.apiSafo}resetLikes`;
 
   constructor(private http: HttpClient) {}
 
@@ -67,5 +68,12 @@ export class RecetaService {
   }
   getRecetaPorPagincion(page: number, pageSize: number) {
     return this.http.get<Recipe[]>(`${this.resetPag}/${page}/${pageSize}`);
+  }
+  likeReset(idStore: string, idUser: string): Observable<Recipe> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get<Recipe>(
+      `${this.resetLike}/idReset=${idStore}/idUser=${idUser}`,
+      { headers: header }
+    );
   }
 }
