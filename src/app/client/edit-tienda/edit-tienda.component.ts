@@ -10,6 +10,7 @@ import { TituloAppService } from './../../services/titulo-app.service';
 import { Component, OnInit } from '@angular/core';
 import { MapComponent } from '../map/map.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 
 @Component({
   selector: 'app-edit-tienda',
@@ -35,7 +36,8 @@ export class EditTiendaComponent implements OnInit {
     private router: Router,
     private typeStoreService: TypeStoreService,
     private modalCtrl: ModalController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private camera: Camera
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -123,5 +125,48 @@ export class EditTiendaComponent implements OnInit {
   }
   cancelar() {
     this.router.navigate(['/home/client/tienda']);
+  }
+  takePicture() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+    };
+
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        // imageData es la ruta de la imagen
+        console.log('Imagen tomada:', imageData);
+
+        // Procesar la imagen de la misma manera que al seleccionar un archivo
+        this.processImage(imageData);
+      },
+      (err) => {
+        console.error('Error al tomar la imagen:', err);
+      }
+    );
+  }
+
+  processImage(imagePath: string) {
+    // Convertir la ruta de la imagen en un objeto File
+    this.file = this.convertToFile(imagePath);
+
+    // Actualizar la vista previa de la imagen
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageUrl = e.target.result;
+    };
+    reader.readAsDataURL(this.file);
+  }
+
+  convertToFile(imagePath: string): File {
+    // Implementar la lógica para convertir la ruta de la imagen en un objeto File
+    // Esto podría implicar crear un nuevo Blob y asignarle el tipo adecuado (JPEG, PNG, etc.)
+    // También es posible que necesites manejar la conversión de URI a Blob si es necesario
+    // Aquí hay un ejemplo básico, pero debes ajustarlo según tus necesidades específicas
+    const blob = new Blob([imagePath], { type: 'image/jpeg' });
+    const file = new File([blob], 'photo.jpg', { type: 'image/jpeg' });
+    return file;
   }
 }

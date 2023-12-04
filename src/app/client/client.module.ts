@@ -19,7 +19,7 @@ import { PublicidadComponent } from './publicidad/publicidad.component';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalificarStoreComponent } from './calificar-store/calificar-store.component';
 import { MapaViewStoreComponent } from './mapa-view-store/mapa-view-store.component';
-
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 @NgModule({
   imports: [
     CommonModule,
@@ -43,5 +43,6 @@ import { MapaViewStoreComponent } from './mapa-view-store/mapa-view-store.compon
     MapaViewStoreComponent,
     PublicidadComponent,
   ],
+  providers: [Camera],
 })
 export class ClientPageModule {}
