@@ -7,9 +7,7 @@ import { TituloAppService } from '../services/titulo-app.service';
   styleUrls: ['./client.page.scss'],
 })
 export class ClientPage implements OnInit {
-  constructor(private tituloAppService: TituloAppService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.tituloAppService.titulo = 'Client';
-  }
+  ngOnInit() {}
 }

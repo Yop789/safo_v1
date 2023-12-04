@@ -50,7 +50,7 @@ export class EditRecetasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tituloAppService.titulo = 'Agregar Receta';
+    this.tituloAppService.titulo = 'Editar Receta';
     this.getRecet();
   }
 

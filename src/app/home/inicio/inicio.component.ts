@@ -25,10 +25,13 @@ export class InicioComponent implements OnInit {
     private recetaService: RecetaService
   ) {}
 
+  ionViewDidEnter() {
+    this.tituloAppService.titulo = 'Inicio';
+  }
   ngOnInit() {
     this.predeterminarVariables();
     this.authService.authServer();
-    this.tituloAppService.titulo = 'Inicio';
+
     this.getRecetas();
   }
 
