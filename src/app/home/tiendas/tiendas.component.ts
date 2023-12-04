@@ -42,8 +42,6 @@ export class TiendasComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.cantidadDePaginas = data.totalPages;
-          console.log(data.totalPages);
-
           this.items = this.items.concat(data.data);
         },
         (error) => {
