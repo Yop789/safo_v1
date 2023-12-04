@@ -26,6 +26,7 @@ import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
 import { OpcionUserComponent } from './opcion-user/opcion-user.component';
 import { ReglaComponent } from './regla/regla.component';
 import { AcercaNosotrosComponent } from './acerca-nosotros/acerca-nosotros.component';
+import { PreguntasComponent } from './preguntas/preguntas.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { AcercaNosotrosComponent } from './acerca-nosotros/acerca-nosotros.compo
     ReglaComponent,
     MisPlatillosComponent,
     AcercaNosotrosComponent,
+    PreguntasComponent,
   ],
   providers: [TituloAppService],
 })
