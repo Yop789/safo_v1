@@ -27,6 +27,7 @@ import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
 import { OpcionUserComponent } from './opcion-user/opcion-user.component';
 import { ReglaComponent } from './regla/regla.component';
 import { AcercaNosotrosComponent } from './acerca-nosotros/acerca-nosotros.component';
+import { PreguntasComponent } from './preguntas/preguntas.component';
 import { IngredientesComponent } from './ingredientes/ingredientes.component';
 import { InstruccionesComponent } from './instrucciones/instrucciones.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
@@ -35,7 +36,6 @@ import { CalificacioComentarComponent } from './calificacio-comentar/calificacio
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { TiendasComponent } from './tiendas/tiendas.component';
 import { MisTiendasFavoritasComponent } from './mis-tiendas-favoritas/mis-tiendas-favoritas.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -66,6 +66,9 @@ import { MisTiendasFavoritasComponent } from './mis-tiendas-favoritas/mis-tienda
     MisPlatillosComponent,
     InstruccionesComponent,
     AcercaNosotrosComponent,
+
+    PreguntasComponent,
+
     IngredientesComponent,
     AgregarRecetaComponent,
     PublicacionesComponent,
@@ -75,6 +78,7 @@ import { MisTiendasFavoritasComponent } from './mis-tiendas-favoritas/mis-tienda
     TiendasComponent,
     MisTiendasFavoritasComponent,
     MisResetasFavoritasComponent,
+
   ],
   providers: [TituloAppService],
 })
