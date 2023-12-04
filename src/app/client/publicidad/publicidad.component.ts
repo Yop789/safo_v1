@@ -23,7 +23,7 @@ export class PublicidadComponent implements OnInit {
       },
     },
     {
-      text: 'Ver',
+      text: 'Ver Tienda',
       data: {
         action: 'share',
       },
