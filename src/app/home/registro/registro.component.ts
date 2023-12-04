@@ -102,7 +102,9 @@ export class RegistroComponent implements OnInit {
       })
       .catch((error) => {
         // Aquí puedes manejar el error, como mostrar un mensaje de error al usuario.
-        this.alertService.presentAlert(error); // Puedes mostrar información detallada del error en la consola.
+        this.alertService.presentAlert(
+          error || 'Error en el servidor lo sentimos inténtelo nuevamente'
+        ); // Puedes mostrar información detallada del error en la consola.
       });
   }
   insertUser(user: User): void {
@@ -118,14 +120,4 @@ export class RegistroComponent implements OnInit {
       }
     );
   }
-
-  // cargarImagen(event: any) {
-  //   let archivo = event.target.files;
-  //   let reader = new FileReader();
-
-  //   reader.readAsDataURL(archivo[0]);
-  //   reader.onload = () => {
-  //     this.usuarioService.addImages('hbhdb_' + new Date(), reader.result);
-  //   };
-  // }
 }

@@ -10,11 +10,11 @@ export class HeaderComponent implements OnInit {
   //variables
   titulo = '';
 
-  constructor(private tituloAppService: TituloAppService) {
+  constructor(private tituloAppService: TituloAppService) {}
+  ionViewDidEnter() {}
+  ngOnInit() {
     this.tituloAppService.titulo$.subscribe((titulo) => {
       this.titulo = titulo;
     });
   }
-
-  ngOnInit() {}
 }

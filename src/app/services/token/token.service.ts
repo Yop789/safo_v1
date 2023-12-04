@@ -10,22 +10,24 @@ export class TokenService {
   constructor() {}
 
   decodeToken() {
-    if (localStorage.length > 0) {
-      const token = '' + localStorage.getItem('token');
-      if (token) {
-        const decodedToken = new JwtHelperService().decodeToken(token);
-        // Check if 'rol' property exists in the decoded token before accessing it
-        if (decodedToken && decodedToken.rol) {
-          return decodedToken;
-        }
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const decodedToken = new JwtHelperService().decodeToken(token);
+
+      // Verificar si la propiedad 'rol' existe en el token decodificado antes de acceder a ella
+      if (decodedToken && decodedToken.rol) {
+        return decodedToken;
       }
-    } else {
-      const user = {
-        rol: {
-          name: '',
-        },
-      };
-      return user;
     }
+
+    // Si no hay token o la propiedad 'rol' no está presente, devolver un usuario por defecto
+    const user = {
+      rol: {
+        name: '',
+      },
+    };
+
+    return user;
   }
 }

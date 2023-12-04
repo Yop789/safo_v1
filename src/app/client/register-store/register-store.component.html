@@ -1,43 +1,105 @@
-<div class="container">
-  <form action="">
-    <h3>Agrega tus datos</h3>
+<ion-content>
+  <div class="container" style="margin-bottom: 100px">
+    <form [formGroup]="form">
+      <h3>Agrega tus datos</h3>
 
-    <ion-card>
-      <div class="mt-3 ms-3 me-3">
-        <ion-label>Nombre de la Tienda</ion-label>
-        <ion-input type="text" placeholder="ej. La palmas"></ion-input>
-      </div>
-    </ion-card>
+      <ion-card>
+        <div class="mt-3 ms-3 me-3">
+          <ion-label>Agrega una imagen a tu tienda</ion-label>
+          <input
+            type="file"
+            accept="image/*"
+            id="fileInput"
+            (change)="onFileSelected($event)"
+            style="display: none"
+          />
 
-    <ion-card>
-      <div class="mt-3 ms-3 me-3">
-        <ion-label>Descripción</ion-label>
-        <ion-input
-          type="text"
-          placeholder="ej. Tienda de abarrotes "
-        ></ion-input>
+          <!-- Vista previa de la imagen -->
+          <div
+            class="mt-3 mb-3 align-content-center justify-content-center d-flex"
+            (click)="openFileInput()"
+          >
+            <img
+              class="border-2"
+              [src]="imageUrl || 'assets/img/SALF.png'"
+              height="185px"
+            />
+          </div>
+        </div>
+      </ion-card>
+
+      <ion-card>
+        <div class="mt-3 ms-3 me-3">
+          <ion-label>Llena el siguiente formulario</ion-label>
+        </div>
+
+        <div class="mt-3 ms-3 me-3">
+          <ion-item>
+            <ion-input
+              formControlName="nombreTienda"
+              type="text"
+              placeholder="ej. La palmas"
+            ></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="mt-3 ms-3 me-3">
+          <ion-item>
+            <ion-input
+              type="text"
+              formControlName="descripcion"
+              placeholder="ej. Tienda de abarrotes "
+            ></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="mt-3 mb-3 ms-3 me-3">
+          <ion-item>
+            <ion-select
+              formControlName="tipoTienda"
+              placeholder="Typo de Tienda"
+            >
+              <ion-select-option
+                *ngFor="let item of typeStore"
+                [value]="item.name"
+                >{{ item.name }}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </div>
+      </ion-card>
+
+      <!-- Sección del mapa (se mostrará solo si la variable de bandera es verdadera) -->
+      <div>
+        <button
+          style="background-color: white; color: black"
+          class="btn me-md-2"
+          (click)="openModal()"
+          type="button"
+        >
+          <ion-icon name="location-outline"></ion-icon>
+          Seleccionar en mapa
+        </button>
       </div>
-    </ion-card>
-    <ion-card>
-      <div class="mt-3 mb-3 ms-3 me-3">
-        <ion-label>Tipo de tienda</ion-label>
-        <ion-select placeholder="Typo de Tienda">
-          <ion-select-option value="f">Ropa</ion-select-option>
-          <ion-select-option value="m">Abarrotes</ion-select-option>
-        </ion-select>
+
+      <div class="mt-4">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button
+            style="background-color: white; color: black"
+            class="btn me-md-2 mb-3"
+            (click)="cancelar()"
+          >
+            Cancelar
+          </button>
+          <button
+            class="btn idBColor btn me-md-2 mb-3"
+            (click)="onSubmit()"
+            [disabled]="form.valid === false || file === null || lat === 0"
+          >
+            Guardar
+          </button>
+        </div>
       </div>
-    </ion-card>
-    <ion-card>
-      <div class="mt-3 ms-3 me-3">
-        <ion-label>Logo</ion-label>
-        <input
-          type="file"
-          id="fileInput"
-          name="fileInput"
-          class="form-control"
-          accept="image/*"
-        />
-      </div>
-    </ion-card>
-  </form>
-</div>
+    </form>
+  </div>
+</ion-content>

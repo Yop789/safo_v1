@@ -9,5 +9,9 @@ export const environment = {
     messagingSenderId: '464115816867',
   },
   apiSafo: 'https://safo-api-v1.onrender.com/api/sofa/',
+  mapbox: {
+    accessToken:
+      'pk.eyJ1IjoianVhbmExMjMiLCJhIjoiY2xwZGIydGtkMDJ2eTJscGF6bjduc3drOSJ9.IevmBB2iIO389X1Mgx9lIA',
+  },
   production: true,
 };

@@ -1,3 +1,4 @@
+import { MisResetasFavoritasComponent } from './mis-resetas-favoritas/mis-resetas-favoritas.component';
 import { MenuComponent } from './menu/menu.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -27,7 +28,14 @@ import { OpcionUserComponent } from './opcion-user/opcion-user.component';
 import { ReglaComponent } from './regla/regla.component';
 import { AcercaNosotrosComponent } from './acerca-nosotros/acerca-nosotros.component';
 import { PreguntasComponent } from './preguntas/preguntas.component';
-
+import { IngredientesComponent } from './ingredientes/ingredientes.component';
+import { InstruccionesComponent } from './instrucciones/instrucciones.component';
+import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { EditRecetasComponent } from './edit-recetas/edit-recetas.component';
+import { CalificacioComentarComponent } from './calificacio-comentar/calificacio-comentar.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { TiendasComponent } from './tiendas/tiendas.component';
+import { MisTiendasFavoritasComponent } from './mis-tiendas-favoritas/mis-tiendas-favoritas.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,8 +64,21 @@ import { PreguntasComponent } from './preguntas/preguntas.component';
     OpcionUserComponent,
     ReglaComponent,
     MisPlatillosComponent,
+    InstruccionesComponent,
     AcercaNosotrosComponent,
+
     PreguntasComponent,
+
+    IngredientesComponent,
+    AgregarRecetaComponent,
+    PublicacionesComponent,
+    EditRecetasComponent,
+    EditUserComponent,
+    CalificacioComentarComponent,
+    TiendasComponent,
+    MisTiendasFavoritasComponent,
+    MisResetasFavoritasComponent,
+
   ],
   providers: [TituloAppService],
 })

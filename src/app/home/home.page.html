@@ -1,10 +1,10 @@
 <ion-menu mode="ios" side="end" contentId="main-content">
-  <ion-header [hidden]="avatar === ''">
-    <ion-toolbar>
+  <ion-header [hidden]="user.rol?.name == ''">
+    <ion-toolbar [routerLink]="'edit-user/'+user._id">
       <ion-avatar>
-        <img [src]="avatar" />
+        <img [src]="user.avatar" />
       </ion-avatar>
-      <ion-title>{{name}}</ion-title>
+      <ion-title>{{user.name}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -29,6 +29,6 @@
   </ion-header>
   <ion-content>
     <ion-router-outlet></ion-router-outlet>
-    <app-footer></app-footer>
+    <!-- <app-footer></app-footer> -->
   </ion-content>
 </div>

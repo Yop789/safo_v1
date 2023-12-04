@@ -1,9 +1,26 @@
-<div class="text-center mt-5">¿Qué cocinare hoy?</div>
+<div class="text-center mt-3">¿Qué cocinare hoy?</div>
 <ion-content>
   <div class="align-content-center justify-content-center d-flex shadow mt-5">
-    <div class="card cr"></div>
+    <ion-card *ngIf="item" [routerLink]="'/home/view/' + item._id">
+      <img alt="Silhouette of mountains" [src]="item.image" />
+      <ion-card-header>
+        <p>{{ item.description }}</p>
+        <ion-card-title>{{ item.name }}</ion-card-title>
+        <ion-card-subtitle class="align-content-center d-flex">
+          {{ item.category }}
+          <ngb-rating
+            [max]="5"
+            [rate]="estrella(item.qualification)"
+            style="font-size: 35px"
+            [readonly]="true"
+          ></ngb-rating>
+        </ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
   </div>
-  <div class="align-content-center justify-content-center d-flex shadow mt-5">
-    <button class="btn idBColor">No me convence</button>
+  <div
+    class="align-content-center justify-content-center d-flex shadow mt-5 mb-5"
+  >
+    <button class="btn idBColor" (click)="onClick()">No me convence</button>
   </div>
 </ion-content>

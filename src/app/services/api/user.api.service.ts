@@ -28,4 +28,10 @@ export class UserApiService {
     let header = new HttpHeaders().set('Type-content', 'aplication/json');
     return this.http.post<User>(this.userApiToken, token, { headers: header });
   }
+  updateUser(id: string, user: any): Observable<User> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.put<User>(`${this.usersApi}/${id}`, user, {
+      headers: header,
+    });
+  }
 }

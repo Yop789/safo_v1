@@ -12,7 +12,13 @@ export class MenuService {
     ''
   );
   public user$: Observable<string> = this.userSubject.asObservable();
-
+  public inicio: Menu[] = [
+    {
+      name: 'inicio',
+      url: '',
+      icon: 'home-outline',
+    },
+  ];
   public inisiarSesion: Menu[] = [
     {
       name: 'iniciosesio',
@@ -26,6 +32,11 @@ export class MenuService {
     },
   ];
   public defaul: Menu[] = [
+    {
+      name: 'tiendas',
+      url: 'tiendas',
+      icon: 'storefront-outline',
+    },
     {
       name: 'Ruleta',
       url: 'ruleta',
@@ -51,15 +62,20 @@ export class MenuService {
   ];
 
   public client: Menu[] = [
-    {
-      name: 'client',
-      url: 'client',
-      icon: 'megaphone-outline',
-    },
+    // {
+    //   name: 'client',
+    //   url: 'client',
+    //   icon: 'megaphone-outline',
+    // },
     {
       name: 'Administración de Tiendas',
       url: 'client/tienda',
       icon: 'storefront-outline',
+    },
+    {
+      name: 'Publicidad',
+      url: 'client/publicidad',
+      icon: 'cart-outline',
     },
   ];
   public admin: Menu[] = [
@@ -75,6 +91,21 @@ export class MenuService {
       url: 'publicaciones',
       icon: 'albums-outline',
     },
+    {
+      name: 'Agregar resetas',
+      url: 'agregar-receta',
+      icon: 'book-outline',
+    },
+    {
+      name: 'Recetas Favoritas',
+      url: 'favorit-receta',
+      icon: 'attach-outline',
+    },
+    {
+      name: 'Tiendas Favoritas',
+      url: 'favorit-store',
+      icon: 'attach-outline',
+    },
   ];
 
   constructor(private tokenService: TokenService) {}
@@ -86,13 +117,13 @@ export class MenuService {
   public getMenus(): any {
     const rol = this.tokenService.decodeToken().rol.name;
     if (rol === '') {
-      return [...this.inisiarSesion, ...this.defaul];
+      return [...this.inisiarSesion, ...this.inicio, ...this.defaul];
     } else if (rol === 'Client') {
-      return [...this.client, ...this.defaul, ...this.logaut];
+      return [...this.inicio, ...this.client, ...this.defaul, ...this.logaut];
     } else if (rol === 'Admin') {
-      return [...this.admin, ...this.defaul, ...this.logaut];
+      return [...this.inicio, ...this.admin, ...this.defaul, ...this.logaut];
     } else if (rol === 'foraneo') {
-      return [...this.foraneo, ...this.defaul, ...this.logaut];
+      return [...this.inicio, ...this.foraneo, ...this.defaul, ...this.logaut];
     }
   }
 }
