@@ -21,7 +21,7 @@ export class MenuService {
   ];
   public inisiarSesion: Menu[] = [
     {
-      name: 'iniciosesio',
+      name: 'iniciosesion',
       url: 'iniciosesio',
       icon: 'log-in-outline',
     },
@@ -105,6 +105,11 @@ export class MenuService {
       name: 'Tiendas Favoritas',
       url: 'favorit-store',
       icon: 'attach-outline',
+    },
+    {
+      name: 'Videos',
+      url: 'videos',
+      icon: 'logo-youtube',
     },
   ];
 
