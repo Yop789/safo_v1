@@ -1,3 +1,13 @@
 .titulo {
-  color: #5cb85c;
+  color: #23160d;
+}
+
+ion-menu {
+  --ion-background-color: #23160d; /* Código de color café, puedes cambiarlo según tus preferencias */
+}
+
+/* También puedes aplicar estilos específicos al encabezado del menú si es necesario */
+
+ion-menu ion-header {
+  --ion-background-color: #8c8b89;
 }

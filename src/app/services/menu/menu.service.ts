@@ -14,14 +14,14 @@ export class MenuService {
   public user$: Observable<string> = this.userSubject.asObservable();
   public inicio: Menu[] = [
     {
-      name: 'inicio',
+      name: 'Inicio',
       url: '',
       icon: 'home-outline',
     },
   ];
   public inisiarSesion: Menu[] = [
     {
-      name: 'iniciosesio',
+      name: 'Iniciar Sesión',
       url: 'iniciosesio',
       icon: 'log-in-outline',
     },
@@ -33,7 +33,7 @@ export class MenuService {
   ];
   public defaul: Menu[] = [
     {
-      name: 'tiendas',
+      name: 'Tiendas',
       url: 'tiendas',
       icon: 'storefront-outline',
     },
@@ -43,19 +43,19 @@ export class MenuService {
       icon: 'shuffle-outline',
     },
     {
-      name: 'preguntas',
+      name: 'Preguntas',
       url: 'preguntas',
       icon: 'help-outline',
     },
     {
-      name: 'acerca',
+      name: 'Acerca',
       url: 'acerca',
       icon: 'alert-outline',
     },
   ];
   public logaut: Menu[] = [
     {
-      name: 'salir',
+      name: 'Salir',
       url: 'salir',
       icon: 'log-out-outline',
     },
@@ -70,12 +70,12 @@ export class MenuService {
     {
       name: 'Administración de Tiendas',
       url: 'client/tienda',
-      icon: 'storefront-outline',
+      icon: 'business-outline',
     },
     {
       name: 'Publicidad',
       url: 'client/publicidad',
-      icon: 'cart-outline',
+      icon: 'clipboard-outline',
     },
   ];
   public admin: Menu[] = [

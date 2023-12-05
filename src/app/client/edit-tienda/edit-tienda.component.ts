@@ -111,7 +111,6 @@ export class EditTiendaComponent implements OnInit {
       // this.lng = data.lng;
       this.lat = data.lat;
       this.lng = data.lng;
-      console.log(this.lat, this.lng);
     }
   }
   getStoreBy() {
