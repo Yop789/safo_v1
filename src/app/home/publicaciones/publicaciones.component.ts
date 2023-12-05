@@ -82,7 +82,7 @@ export class PublicacionesComponent implements OnInit {
     this.router.navigate(['/home/agregar-receta']);
   }
   get() {
-    this.recetaService.getRecipe().subscribe((data: Recipe[]) => {
+    this.recetaService.getRecipeByUserId().subscribe((data: Recipe[]) => {
       this.items = data;
     });
   }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiYoutubeService } from 'src/app/services/api-youtube/api-youtube.service';
 import { TituloAppService } from '../../services/titulo-app.service';
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 declare var $;
 @Component({
@@ -8,30 +10,47 @@ declare var $;
   templateUrl: './api-youtube.component.html',
   styleUrls: ['./api-youtube.component.scss'],
 })
-export class ApiYoutubeComponent  implements OnInit {
-
+export class ApiYoutubeComponent implements OnInit {
   isModalOpen = false;
   videoId: string;
-  losVideos: any[]=[];
-  constructor( private _youtube: ApiYoutubeService, private tituloAppService: TituloAppService,) {
-    this._youtube.obtenerVideos().subscribe((resp:any)=>{
+  losVideos: any[] = [];
+  @ViewChild(IonModal) modal: IonModal;
+
+  constructor(
+    private _youtube: ApiYoutubeService,
+    private tituloAppService: TituloAppService
+  ) {
+    this._youtube.obtenerVideos().subscribe((resp: any) => {
       console.log(resp);
       this.losVideos = resp.items;
     });
-    this.tituloAppService.titulo= "Videos de recetas";
+    this.tituloAppService.titulo = 'Videos de recetas';
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
-  ngOnInit() {}
+  cerrarModal() {}
 
-  verVideo(detalle:string){
-    console.log(detalle);
-    this.videoId=detalle;
-    $('#exampleModal').modal();
+  cancel() {
+    this.isModalOpen = false;
+    this.videoId = null;
   }
 
-  cerrarModal(){
-    this.videoId=null;
-    $('#exampleModal').modal('hide');
+  confirm() {
+    this.isModalOpen = false;
+    // Lógica de confirmación si es necesario
   }
 
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      // Lógica cuando se confirma el modal
+    }
+  }
+
+  verVideo(detalle: string) {
+    this.videoId = detalle;
+    this.isModalOpen = true;
+  }
 }

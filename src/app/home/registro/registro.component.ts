@@ -26,7 +26,8 @@ export class RegistroComponent implements OnInit {
   private passForm =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
   public password = false;
-  isNavegador: boolean;
+  public terminos = false;
+  public isNavegador: boolean;
 
   constructor(
     private usuarioService: UsuarioService,

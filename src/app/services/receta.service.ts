@@ -19,6 +19,7 @@ export class RecetaService {
   resetLike = `${environment.apiSafo}resetLikes`;
   resetPagFilter = `${environment.apiSafo}resetSeach`;
   resetFavorite = `${environment.apiSafo}resetLiqueUser/idUser=`;
+  resetByUserId = `${environment.apiSafo}resetUser`;
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
@@ -32,6 +33,10 @@ export class RecetaService {
   }
   getRecipeById(id: any): Observable<Recipe> {
     return this.http.get<Recipe>(`${this.usersApi}/${id}`);
+  }
+  getRecipeByUserId(): Observable<Recipe[]> {
+    const user: User = this.tokenService.decodeToken();
+    return this.http.get<Recipe[]>(`${this.resetByUserId}/${user._id}`);
   }
   deleteRecipeById(id: any): Observable<any> {
     return this.http.delete(`${this.usersApi}/${id}`);

@@ -25,31 +25,23 @@
 #container a {
   text-decoration: none;
 }
-.btnReg{
+.btnReg {
   --background: #3ce04e;
   --background-activated: #b8b8b8;
   --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
-
 }
-.idText{
+.idText {
   font-size: 30px;
 }
 
-.idText{
-  color: #5CB85C;
+.idText {
+  color: #5cb85c;
 }
-.idBColor{
-  background-color: #5CB85C;
-  color: white;
-
-}
-.idBColor2{
+.idBColor2 {
   background-color: #d73425;
   color: white;
-
 }
-.idBColor:hover{
+.idBColor:hover {
   background-color: #7d807d;
   color: white;
-
 }

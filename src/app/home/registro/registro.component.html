@@ -71,18 +71,18 @@
         </div>
         <br />
         <div class="d-flex justify-content-start align-items-center ms-3">
-          <input type="checkbox" />
+          <input type="checkbox" (change)="terminos = !terminos" />
           <label for="mostrarContrasena" class="checkbox-label ms-2">
-            Aceptar terminos y condiciones
+            Aceptar términos y condiciones
           </label>
         </div>
       </form>
 
-      <div class="d-grid gap-2 container mt-2">
+      <div class="d-grid gap-2 container mt-2 mb-3">
         <button
           type="button"
           class="btn idBColor"
-          [disabled]="formReg.invalid"
+          [disabled]="formReg.invalid || terminos == false"
           (click)="summit()"
         >
           Registrarse
