@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import { TituloAppService } from 'src/app/services/titulo-app.service';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -18,6 +19,7 @@ import { Router } from '@angular/router';
 export class InicioSesionComponent implements OnInit {
   public formInicioSesion: FormGroup;
   public mostrarPassword: boolean = false;
+  isNavegador: boolean;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -27,8 +29,10 @@ export class InicioSesionComponent implements OnInit {
     private alertService: AlertService,
     private userApiService: UserApiService,
     private erroresFirebaseService: ErroresFirebaseService,
-    private MenuService: MenuService
+    private MenuService: MenuService,
+    private platform: Platform
   ) {
+    this.isNavegador = this.platform.is('desktop');
     this.formInicioSesion = this.formBuilder.group({
       correo: [
         '',

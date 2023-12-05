@@ -1,0 +1,28 @@
+<ion-content>
+  <!-- Sección Preguntas Frecuentes -->
+  <ion-card>
+    <ion-list>
+      <ion-item-group *ngFor="let pregunta of preguntas">
+        <ion-item
+          (click)="toggleRespuesta(pregunta)"
+          lines="full"
+          class="pregunta-item"
+        >
+          <ion-text class="pregunta-label">{{ pregunta.pregunta }}</ion-text>
+          <ion-icon
+            [name]="pregunta.mostrarRespuesta ? 'chevron-up' : 'chevron-down'"
+            slot="end"
+          ></ion-icon>
+        </ion-item>
+
+        <ion-item
+          *ngIf="pregunta.mostrarRespuesta"
+          lines="full"
+          class="respuesta-item"
+        >
+          <ion-text class="respuesta-label">{{ pregunta.respuesta }}</ion-text>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </ion-card>
+</ion-content>

@@ -89,12 +89,14 @@
         </button>
       </div>
 
-      <h2>O</h2>
+      <div *ngIf="isNavegador">
+        <h2>O</h2>
 
-      <div class="d-grid gap-2 container mb-3">
-        <button type="button" class="btn idBColor" (click)="onClic()">
-          <ion-icon name="logo-google"></ion-icon> Registrarse con Google
-        </button>
+        <div class="d-grid gap-2 container mb-3">
+          <button type="button" class="btn idBColor" (click)="onClic()">
+            <ion-icon name="logo-google"></ion-icon> Registrarse con Google
+          </button>
+        </div>
       </div>
     </ion-card>
   </div>

@@ -13,7 +13,7 @@ import {
 } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -26,6 +26,7 @@ export class RegistroComponent implements OnInit {
   private passForm =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
   public password = false;
+  isNavegador: boolean;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -35,8 +36,10 @@ export class RegistroComponent implements OnInit {
     private route: ActivatedRoute,
     private userApiService: UserApiService,
     private alertService: AlertService,
-    private erroresFirebaseService: ErroresFirebaseService
+    private erroresFirebaseService: ErroresFirebaseService,
+    private platform: Platform
   ) {
+    this.isNavegador = this.platform.is('desktop');
     this.formReg = this.formBuilder.group(
       {
         name: new FormControl('', [Validators.required]),

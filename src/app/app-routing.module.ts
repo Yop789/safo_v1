@@ -16,6 +16,7 @@ import { StoreComponent } from './client/store/store.component';
 import { RegisterStoreComponent } from './client/register-store/register-store.component';
 import { PublicacionesComponent } from './home/publicaciones/publicaciones.component';
 import { AcercaNosotrosComponent } from './home/acerca-nosotros/acerca-nosotros.component';
+import { PreguntasComponent } from './home/preguntas/preguntas.component';
 
 import { AgregarRecetaComponent } from './home/agregar-receta/agregar-receta.component';
 import { EditRecetasComponent } from './home/edit-recetas/edit-recetas.component';
@@ -62,6 +63,7 @@ const routes: Routes = [
       { path: 'agregar-receta', component: AgregarRecetaComponent },
       { path: 'edit-receta/:id', component: EditRecetasComponent },
       { path: 'acerca', component: AcercaNosotrosComponent },
+      { path: 'preguntas', component: PreguntasComponent },
       { path: 'view/:id', component: DetallesComponent },
       { path: 'edit-user/:id', component: EditUserComponent },
       { path: 'tiendas', component: TiendasComponent },

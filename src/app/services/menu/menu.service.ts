@@ -44,7 +44,7 @@ export class MenuService {
     },
     {
       name: 'preguntas',
-      url: '#',
+      url: 'preguntas',
       icon: 'help-outline',
     },
     {

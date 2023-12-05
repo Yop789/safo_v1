@@ -27,6 +27,7 @@ import { MisPlatillosComponent } from './mis-platillos/mis-platillos.component';
 import { OpcionUserComponent } from './opcion-user/opcion-user.component';
 import { ReglaComponent } from './regla/regla.component';
 import { AcercaNosotrosComponent } from './acerca-nosotros/acerca-nosotros.component';
+import { PreguntasComponent } from './preguntas/preguntas.component';
 import { IngredientesComponent } from './ingredientes/ingredientes.component';
 import { InstruccionesComponent } from './instrucciones/instrucciones.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
@@ -36,7 +37,6 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { TiendasComponent } from './tiendas/tiendas.component';
 import { MisTiendasFavoritasComponent } from './mis-tiendas-favoritas/mis-tiendas-favoritas.component';
 import { ApiYoutubeComponent } from './api-youtube/api-youtube.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -67,6 +67,9 @@ import { ApiYoutubeComponent } from './api-youtube/api-youtube.component';
     MisPlatillosComponent,
     InstruccionesComponent,
     AcercaNosotrosComponent,
+
+    PreguntasComponent,
+
     IngredientesComponent,
     AgregarRecetaComponent,
     PublicacionesComponent,
