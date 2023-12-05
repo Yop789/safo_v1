@@ -28,6 +28,7 @@ import { PublicidadComponent } from './client/publicidad/publicidad.component';
 import { EditUserComponent } from './home/edit-user/edit-user.component';
 import { TiendasComponent } from './home/tiendas/tiendas.component';
 import { MisTiendasFavoritasComponent } from './home/mis-tiendas-favoritas/mis-tiendas-favoritas.component';
+import { ApiYoutubeComponent } from './home/api-youtube/api-youtube.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'inicio',
         component: InicioComponent,
+      },
+      {
+        path: 'videos',
+        component: ApiYoutubeComponent, //
       },
       { path: 'registro/:id', component: RegistroComponent },
       { path: 'iniciosesio', component: InicioSesionComponent },
