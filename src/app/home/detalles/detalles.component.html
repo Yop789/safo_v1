@@ -1,0 +1,74 @@
+<ion-content>
+  <ion-card *ngIf="public" [routerLink]="'/home/view-tienda/' + public.idStore">
+    <ion-item class="m-2">
+      <div style="border-radius: 5px">
+        <ion-img style="height: 50px" [src]="public.image"></ion-img>
+      </div>
+
+      <ion-label>{{ public.name }}</ion-label>
+    </ion-item>
+  </ion-card>
+  <ion-card *ngIf="data">
+    <ion-icon
+      style="font-size: 40px"
+      name="attach-outline"
+      [style.color]="isFavorite ? '#5cb85c' : '#eeeeee'"
+      (click)="toggleFavorite()"
+    ></ion-icon>
+    <ion-card-header>
+      <ion-card-title style="text-align: center">{{
+        data.name || "nombre de la receta"
+      }}</ion-card-title>
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-img [src]="data.idUser.avatar"></ion-img>
+        </ion-avatar>
+        <ion-label>{{ data.idUser.name }}</ion-label>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-card-subtitle>Detalla de la receta</ion-card-subtitle>
+          <ion-card-content>
+            {{ data.description }}
+          </ion-card-content>
+          <ion-card-subtitle>Ingredientes</ion-card-subtitle>
+
+          <ion-list lines="none">
+            <ion-item *ngFor="let item of data.ingredients">
+              <ion-label
+                >* {{ item.name }} {{ item.type }} {{ item.quantity }}
+                {{ item.unit }}
+              </ion-label>
+            </ion-item>
+          </ion-list>
+          <ion-col
+            ><ion-img style="height: 308px" [src]="data.image"></ion-img>
+            <div class="d-flex align-items-center justify-content-center">
+              <ngb-rating
+                [max]="5"
+                [(rate)]="starRating"
+                style="font-size: 35px"
+                [readonly]="true"
+                (click)="openModalInstrucciones()"
+              ></ngb-rating>
+              <span class="ml-2">Tiempo: {{ data.duration }} min</span>
+            </div>
+          </ion-col>
+          <ion-card-subtitle>Preparación</ion-card-subtitle>
+          <div *ngFor="let item of data.steps">
+            <ion-item>
+              <ion-label>Paso {{ item.step }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-text>{{ item.description }}</ion-text>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

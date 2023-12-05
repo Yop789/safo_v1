@@ -1,0 +1,41 @@
+<ion-content>
+  <div id="container" class="container">
+    <ion-card>
+      <ion-card-subtitle>
+        Selecciona el servicio que deseas tener
+      </ion-card-subtitle>
+      <ion-card-content>
+        <ion-card>
+          <ion-card-subtitle>Foráneo</ion-card-subtitle>
+          <ion-card-content>
+            Te permite compartir y tener tus recetas favoritas además de poder
+            calificar los servicios y recetas.
+          </ion-card-content>
+          <button
+            class="btn idText"
+            (click)="pagina('registro', 'foraneo')"
+            type="button"
+          >
+            Seleccionar
+          </button>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-subtitle>Cliente</ion-card-subtitle>
+          <ion-card-content>
+            Te ofreceremos el servicio de publicitar tu servicio por un precio
+            por anuncio $0.50.
+          </ion-card-content>
+
+          <button
+            class="btn idText"
+            (click)="pagina('registro', 'Client')"
+            type="button"
+          >
+            Seleccionar
+          </button>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

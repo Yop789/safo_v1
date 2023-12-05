@@ -1,0 +1,81 @@
+<ion-content [fullscreen]="true">
+  <div id="container" class="container" mode="ios">
+    <form [formGroup]="formInicioSesion" (ngSubmit)="iniciarSesion()">
+      <ion-card>
+        <div class="container">
+          <br />
+
+          <input
+            type="text"
+            name="email"
+            placeholder="Correo"
+            formControlName="correo"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                formInicioSesion.get('correo')?.touched &&
+                formInicioSesion.get('correo')?.invalid
+            }"
+          />
+
+          <br />
+          <div
+            class="invalid-feedback"
+            *ngIf="formInicioSesion.get('correo')?.hasError('pattern')"
+          >
+            Correo inválido.
+          </div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            formControlName="password"
+            [type]="mostrarPassword ? 'text' : 'password'"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                formInicioSesion.get('password')?.touched &&
+                formInicioSesion.get('password')?.invalid
+            }"
+          />
+
+          <div
+            class="invalid-feedback"
+            *ngIf="formInicioSesion.get('password')?.hasError('pattern')"
+          >
+            La contraseña debe tener al menos 8 caracteres, incluyendo una letra
+            mayúscula, una letra minúscula, un carácter especial y al menos un
+            número.
+          </div>
+          <br />
+        </div>
+        <div class="d-flex justify-content-start align-items-center ms-3">
+          <input
+            type="checkbox"
+            (change)="mostrarPassword = !mostrarPassword"
+          />
+          <label for="mostrarContrasena" class="checkbox-label ms-2">
+            Mostrar contraseña</label
+          >
+        </div>
+        <div class="d-flex justify-content-start align-items-center ms-3 mt-3">
+          <a routerLink="/home/recuperar">Recuperar contraseña</a>
+        </div>
+        <div class="d-grid gap-2 container mt-4">
+          <button type="button" class="btn idBColor" (click)="iniciarSesion()">
+            Iniciar Sesión
+          </button>
+        </div>
+
+        <p class="ion-text-center idText mt-3">
+          ¿No tienes una cuenta? <a routerLink="/home/usuOpc">Regístrate</a>
+        </p>
+        <div class="d-grid gap-2 container mb-3 mt-3">
+          <button type="button" class="btn idBColor" (click)="onClic()">
+            <ion-icon name="logo-google"></ion-icon> Registrarse con Google
+          </button>
+        </div>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

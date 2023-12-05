@@ -1,0 +1,51 @@
+<ion-content>
+  <ion-card *ngIf="data">
+    <ion-icon
+      style="font-size: 40px"
+      name="attach-outline"
+      [style.color]="isFavorite ? '#5cb85c' : '#eeeeee'"
+      (click)="toggleFavorite()"
+    ></ion-icon>
+    <ion-card-header>
+      <ion-card-title style="text-align: center">{{
+        data.name || "nombre de la tienda"
+      }}</ion-card-title>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-img [src]="data.idUser.avatar"></ion-img>
+        </ion-avatar>
+        <ion-label>{{ data.idUser.name }}</ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col
+          ><ion-img style="height: 308px" [src]="data.image"></ion-img>
+          <div class="d-flex align-items-center justify-content-center">
+            <ngb-rating
+              [max]="5"
+              [(rate)]="starRating"
+              style="font-size: 35px"
+              [readonly]="true"
+              (click)="openModalInstrucciones()"
+            ></ngb-rating>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-col>
+        <ion-text>{{ data.description }}</ion-text>
+      </ion-col>
+    </ion-card-content>
+    <div>
+      <button
+        style="background-color: white; color: black"
+        class="btn me-md-2"
+        (click)="openModal()"
+        type="button"
+      >
+        <ion-icon name="location-outline"></ion-icon>
+        Ubicación
+      </button>
+    </div>
+  </ion-card>
+</ion-content>

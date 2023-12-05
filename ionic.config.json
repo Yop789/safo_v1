@@ -1,5 +1,7 @@
 {
-  "name": "ionic-app-base",
-  "integrations": {},
+  "name": "Safo",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

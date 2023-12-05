@@ -1,0 +1,167 @@
+<ion-content>
+  <form [formGroup]="formReceta">
+    <ion-card>
+      <div class="mt-3 ms-3 me-3">
+        <ion-label>Agrega una imagen a tu receta</ion-label>
+        <input
+          type="file"
+          accept="image/*"
+          id="fileInput"
+          (change)="onFileSelected($event)"
+          style="display: none"
+        />
+
+        <!-- Vista previa de la imagen -->
+        <div
+          class="mt-3 mb-3 align-content-center justify-content-center d-flex"
+          (click)="openFileInput()"
+        >
+          <img
+            class="border-2"
+            [src]="imageUrl || 'assets/img/SALF.png'"
+            height="185px"
+          />
+        </div>
+      </div>
+    </ion-card>
+    <ion-card>
+      <div class="mt-3 ms-3 me-3">
+        <ion-label class="mt-3">Llena cada uno de los campos</ion-label>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-input
+            formControlName="name"
+            placeholder="Ej. Nombre de la receta"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-textarea
+            formControlName="description"
+            placeholder="Ej. Descripción de la receta"
+          >
+          </ion-textarea>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-input
+            type="number"
+            formControlName="duration"
+            placeholder="Ej. Duración den minutos"
+          ></ion-input>
+          min
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-select
+            formControlName="type"
+            placeholder="Ej. Tipo de la receta"
+          >
+            <ion-select-option value="postres">Postres</ion-select-option>
+
+            <ion-select-option value="comidas">Comidas</ion-select-option>
+
+            <ion-select-option value="cenas">Cenas</ion-select-option>
+
+            <ion-select-option value="desayunos">Desayunos</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-select
+            formControlName="difficulty"
+            placeholder="Ej. Dificultad de la receta"
+          >
+            <ion-select-option value="baja">Baja</ion-select-option>
+
+            <ion-select-option value="media">Media</ion-select-option>
+
+            <ion-select-option value="alta">Alta</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div class="mt-3 ms-3 me-3">
+        <ion-item>
+          <ion-select
+            formControlName="category"
+            placeholder="Ej. Categoría de la receta"
+          >
+            <ion-select-option value="vegetariano_vegano"
+              >Vegetariano/Vegano</ion-select-option
+            >
+            <ion-select-option value="sin_gluten">Sin Gluten</ion-select-option>
+            <ion-select-option value="bajas_en_carbohidratos"
+              >Bajas en Carbohidratos</ion-select-option
+            >
+            <ion-select-option value="alta_en_proteinas"
+              >Alta en Proteínas</ion-select-option
+            >
+            <ion-select-option value="comida_rapida"
+              >Comida Rápida</ion-select-option
+            >
+            <ion-select-option value="comida_casera"
+              >Comida Casera</ion-select-option
+            >
+            <ion-select-option value="internacional"
+              >Internacional</ion-select-option
+            >
+            <ion-select-option value="saludable">Saludable</ion-select-option>
+            <!-- Puedes agregar más categorías según tus necesidades -->
+          </ion-select>
+        </ion-item>
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 ms-3 me-3">
+        <button
+          style="background-color: white; color: black"
+          class="btn me-md-2 mb-3"
+          (click)="openModalIngredientes()"
+        >
+          Ingredientes {{ ingredientes.length }}
+        </button>
+        <button
+          style="background-color: white; color: black"
+          class="btn me-md-2 mb-3"
+          (click)="openModalInstrucciones()"
+        >
+          Instrucciones {{ step.length }}
+        </button>
+      </div>
+    </ion-card>
+    <ion-card>
+      <div class="mt-4">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button
+            style="background-color: white; color: black"
+            class="btn me-md-2 mb-3"
+            (click)="cancelar()"
+          >
+            Cancelar
+          </button>
+          <button
+            (click)="summit()"
+            class="btn idBColor me-md-2 mb-4"
+            [disabled]="
+              formReceta.valid === false ||
+              ingredientes.length === 0 ||
+              step.length === 0 ||
+              file === null
+            "
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </ion-card>
+  </form>
+</ion-content>
