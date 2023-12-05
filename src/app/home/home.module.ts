@@ -36,6 +36,7 @@ import { CalificacioComentarComponent } from './calificacio-comentar/calificacio
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { TiendasComponent } from './tiendas/tiendas.component';
 import { MisTiendasFavoritasComponent } from './mis-tiendas-favoritas/mis-tiendas-favoritas.component';
+import { ApiYoutubeComponent } from './api-youtube/api-youtube.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -78,7 +79,7 @@ import { MisTiendasFavoritasComponent } from './mis-tiendas-favoritas/mis-tienda
     TiendasComponent,
     MisTiendasFavoritasComponent,
     MisResetasFavoritasComponent,
-
+    ApiYoutubeComponent
   ],
   providers: [TituloAppService],
 })

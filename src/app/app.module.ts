@@ -21,9 +21,10 @@ import { ClientPageModule } from './client/client.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ApiYoutubePipe } from './pipes/api-youtube.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ApiYoutubePipe],
   imports: [
     HomePageModule,
     NgbRatingModule,

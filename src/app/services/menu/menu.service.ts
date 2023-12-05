@@ -106,6 +106,11 @@ export class MenuService {
       url: 'favorit-store',
       icon: 'attach-outline',
     },
+    {
+      name: 'Videos',
+      url: 'videos',
+      icon: 'logo-youtube',
+    },
   ];
 
   constructor(private tokenService: TokenService) {}
