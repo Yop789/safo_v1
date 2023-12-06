@@ -2,7 +2,10 @@
 <ion-content>
   <div class="align-content-center justify-content-center d-flex shadow mt-5">
     <ion-card *ngIf="item" [routerLink]="'/home/view/' + item._id">
-      <img alt="Silhouette of mountains" [src]="item.image" />
+      <div [style.height.px]="280">
+        <img alt="Silhouette of mountains" [src]="item.image" />
+      </div>
+
       <ion-card-header>
         <p>{{ item.description }}</p>
         <ion-card-title>{{ item.name }}</ion-card-title>

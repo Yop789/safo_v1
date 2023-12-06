@@ -14,12 +14,9 @@
       [routerLink]="'/home/view/' + item._id"
     >
       <ion-card>
-        <img
-          alt="Silhouette of mountains"
-          [src]="item.image"
-          loading="lazy"
-          (load)="onImageLoad(i)"
-        />
+        <div [style.height.px]="280">
+          <img [src]="item.image" loading="lazy" (load)="onImageLoad(i)" />
+        </div>
         <div *ngIf="!imageLoaded[i]">
           <ion-skeleton-text
             [animated]="true"

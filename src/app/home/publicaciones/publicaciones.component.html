@@ -4,7 +4,10 @@
   <ion-row>
     <ion-col size-md="2" *ngFor="let item of items" (click)="open(item._id)">
       <ion-card>
-        <img alt="Silhouette of mountains" [src]="item.image" />
+        <div [style.height.px]="280">
+          <img alt="Silhouette of mountains" [src]="item.image" />
+        </div>
+
         <ion-card-header>
           <p>{{ item.description }}</p>
           <ion-card-title>{{ item.name }}</ion-card-title>

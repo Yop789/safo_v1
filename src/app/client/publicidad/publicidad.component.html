@@ -10,10 +10,12 @@
       (click)="open(item.idStore._id, item._id)"
     >
       <ion-card>
-        <img
-          alt="Silhouette of mountains"
-          [src]="item.image || '/assets/icon/favicon.png'"
-        />
+        <div [style.height.px]="280">
+          <img
+            alt="Silhouette of mountains"
+            [src]="item.image || '/assets/icon/favicon.png'"
+          />
+        </div>
         <ion-card-header>
           <ion-card-title>{{ item.idStore.name }}</ion-card-title>
           <ion-card-subtitle>{{ item.description }}</ion-card-subtitle>
